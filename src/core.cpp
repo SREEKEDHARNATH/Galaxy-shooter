@@ -2,18 +2,23 @@
 #include "SDL.h"
 #include "SDL_error.h"
 #include "SDL_events.h"
+#include "SDL_image.h"
 #include "SDL_keycode.h"
-#include "SDL_mouse.h"
 #include "SDL_render.h"
 #include "SDL_video.h"
 #include <iostream>
 #include <utility>
+#include "api.hpp"
 #include "listeners.hpp"
 
 namespace core {
     std::pair<bool, const char*> init(){
+        int img_flags = IMG_INIT_PNG || IMG_INIT_JPG;
         if (SDL_Init(SDL_INIT_EVERYTHING)){
             return {false, SDL_GetError()};
+        }
+        if ((IMG_Init(img_flags) & img_flags) != img_flags){
+            return {false, IMG_GetError()};
         }
         getWindow()=SDL_CreateWindow(getTitle(), getX(), getY(), getW(), getH(), SDL_WINDOW_HIDDEN);
         if (!getWindow()){
@@ -34,6 +39,8 @@ namespace core {
 
         SDL_Event e;
         bool running=true;
+        api::image img("", false);
+        img.set(255, 0,0,32,32);
 
         SDL_ShowWindow(getWindow());
         while (running){
@@ -63,6 +70,7 @@ namespace core {
             }
 
             SDL_RenderClear(getRenderer());
+            img.draw();
             SDL_RenderPresent(getRenderer());
             
             keylistener::update();
@@ -77,6 +85,7 @@ namespace core {
         if (getRenderer()){
             SDL_DestroyWindow(getWindow());
         }
+        IMG_Quit();
         SDL_Quit();
     }
 

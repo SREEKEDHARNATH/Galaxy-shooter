@@ -72,10 +72,24 @@ include CMakeFiles/p.dir/flags.make
 CMakeFiles/p.dir/codegen:
 .PHONY : CMakeFiles/p.dir/codegen
 
+CMakeFiles/p.dir/src/api.cpp.o: CMakeFiles/p.dir/flags.make
+CMakeFiles/p.dir/src/api.cpp.o: /home/sree/12-weeks-projects/Galaxy\ shooter/src/api.cpp
+CMakeFiles/p.dir/src/api.cpp.o: CMakeFiles/p.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/sree/12-weeks-projects/Galaxy shooter/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/p.dir/src/api.cpp.o"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/p.dir/src/api.cpp.o -MF CMakeFiles/p.dir/src/api.cpp.o.d -o CMakeFiles/p.dir/src/api.cpp.o -c "/home/sree/12-weeks-projects/Galaxy shooter/src/api.cpp"
+
+CMakeFiles/p.dir/src/api.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/p.dir/src/api.cpp.i"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sree/12-weeks-projects/Galaxy shooter/src/api.cpp" > CMakeFiles/p.dir/src/api.cpp.i
+
+CMakeFiles/p.dir/src/api.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/p.dir/src/api.cpp.s"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sree/12-weeks-projects/Galaxy shooter/src/api.cpp" -o CMakeFiles/p.dir/src/api.cpp.s
+
 CMakeFiles/p.dir/src/core.cpp.o: CMakeFiles/p.dir/flags.make
 CMakeFiles/p.dir/src/core.cpp.o: /home/sree/12-weeks-projects/Galaxy\ shooter/src/core.cpp
 CMakeFiles/p.dir/src/core.cpp.o: CMakeFiles/p.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/sree/12-weeks-projects/Galaxy shooter/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/p.dir/src/core.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/sree/12-weeks-projects/Galaxy shooter/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/p.dir/src/core.cpp.o"
 	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/p.dir/src/core.cpp.o -MF CMakeFiles/p.dir/src/core.cpp.o.d -o CMakeFiles/p.dir/src/core.cpp.o -c "/home/sree/12-weeks-projects/Galaxy shooter/src/core.cpp"
 
 CMakeFiles/p.dir/src/core.cpp.i: cmake_force
@@ -89,7 +103,7 @@ CMakeFiles/p.dir/src/core.cpp.s: cmake_force
 CMakeFiles/p.dir/src/listeners.cpp.o: CMakeFiles/p.dir/flags.make
 CMakeFiles/p.dir/src/listeners.cpp.o: /home/sree/12-weeks-projects/Galaxy\ shooter/src/listeners.cpp
 CMakeFiles/p.dir/src/listeners.cpp.o: CMakeFiles/p.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/sree/12-weeks-projects/Galaxy shooter/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/p.dir/src/listeners.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/sree/12-weeks-projects/Galaxy shooter/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/p.dir/src/listeners.cpp.o"
 	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/p.dir/src/listeners.cpp.o -MF CMakeFiles/p.dir/src/listeners.cpp.o.d -o CMakeFiles/p.dir/src/listeners.cpp.o -c "/home/sree/12-weeks-projects/Galaxy shooter/src/listeners.cpp"
 
 CMakeFiles/p.dir/src/listeners.cpp.i: cmake_force
@@ -103,7 +117,7 @@ CMakeFiles/p.dir/src/listeners.cpp.s: cmake_force
 CMakeFiles/p.dir/src/main.cpp.o: CMakeFiles/p.dir/flags.make
 CMakeFiles/p.dir/src/main.cpp.o: /home/sree/12-weeks-projects/Galaxy\ shooter/src/main.cpp
 CMakeFiles/p.dir/src/main.cpp.o: CMakeFiles/p.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/sree/12-weeks-projects/Galaxy shooter/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/p.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/sree/12-weeks-projects/Galaxy shooter/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/p.dir/src/main.cpp.o"
 	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/p.dir/src/main.cpp.o -MF CMakeFiles/p.dir/src/main.cpp.o.d -o CMakeFiles/p.dir/src/main.cpp.o -c "/home/sree/12-weeks-projects/Galaxy shooter/src/main.cpp"
 
 CMakeFiles/p.dir/src/main.cpp.i: cmake_force
@@ -116,6 +130,7 @@ CMakeFiles/p.dir/src/main.cpp.s: cmake_force
 
 # Object files for target p
 p_OBJECTS = \
+"CMakeFiles/p.dir/src/api.cpp.o" \
 "CMakeFiles/p.dir/src/core.cpp.o" \
 "CMakeFiles/p.dir/src/listeners.cpp.o" \
 "CMakeFiles/p.dir/src/main.cpp.o"
@@ -123,6 +138,7 @@ p_OBJECTS = \
 # External object files for target p
 p_EXTERNAL_OBJECTS =
 
+p : CMakeFiles/p.dir/src/api.cpp.o
 p : CMakeFiles/p.dir/src/core.cpp.o
 p : CMakeFiles/p.dir/src/listeners.cpp.o
 p : CMakeFiles/p.dir/src/main.cpp.o
@@ -137,7 +153,7 @@ p : /home/sree/12-weeks-projects/Galaxy\ shooter/libs/libSDL2_ttf.a
 p : /home/sree/12-weeks-projects/Galaxy\ shooter/libs/libSDL2.a
 p : /home/sree/12-weeks-projects/Galaxy\ shooter/libs/libfreetype.a
 p : CMakeFiles/p.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/home/sree/12-weeks-projects/Galaxy shooter/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable p"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/home/sree/12-weeks-projects/Galaxy shooter/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable p"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/p.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
