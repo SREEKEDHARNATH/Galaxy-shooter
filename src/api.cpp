@@ -6,8 +6,10 @@
 #include "SDL_ttf.h"
 #include "core.hpp"
 #include "SDL_image.h"
+#include "soloud/soloud.h"
 #include <iostream>
 #include <memory>
+#include <string>
 
 namespace core::api {
     image::image(const char* name, bool load, bool autoset){
@@ -129,5 +131,24 @@ namespace core::api {
     }
     const char* text::get(){
         return st.c_str();
+    }
+
+    void delS(SoLoud::Soloud* ptr){
+        if (ptr){
+            ptr->deinit();
+            delete ptr;
+        }
+    }
+    soundsystem::soundsystem(){
+        auto* pt = new SoLoud::Soloud();
+        soloud.reset(pt, delS);
+        std::string res = soloud->getErrorString(soloud->init());
+        if (res != "No error"){
+            std::cerr << res << "\n";
+            return;
+        }
+    }
+    std::shared_ptr<SoLoud::Soloud> soundsystem::get(){
+        return soloud;
     }
 }

@@ -57,6 +57,13 @@ CMakeFiles/p.dir/src/api.cpp.o: /home/sree/12-weeks-projects/Galaxy\ shooter/src
   /home/sree/12-weeks-projects/Galaxy\ shooter/include/begin_code.h \
   /home/sree/12-weeks-projects/Galaxy\ shooter/include/close_code.h \
   /home/sree/12-weeks-projects/Galaxy\ shooter/include/core.hpp \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_audiosource.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_bus.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_error.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_fader.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_filter.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_queue.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
@@ -69,6 +76,7 @@ CMakeFiles/p.dir/src/api.cpp.o: /home/sree/12-weeks-projects/Galaxy\ shooter/src
   /usr/include/asm/posix_types.h \
   /usr/include/asm/posix_types_64.h \
   /usr/include/asm/types.h \
+  /usr/include/assert.h \
   /usr/include/bits/atomic_wide_counter.h \
   /usr/include/bits/byteswap.h \
   /usr/include/bits/cpu-set.h \
@@ -503,6 +511,13 @@ CMakeFiles/p.dir/src/core.cpp.o: /home/sree/12-weeks-projects/Galaxy\ shooter/sr
   /home/sree/12-weeks-projects/Galaxy\ shooter/include/close_code.h \
   /home/sree/12-weeks-projects/Galaxy\ shooter/include/core.hpp \
   /home/sree/12-weeks-projects/Galaxy\ shooter/include/listeners.hpp \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_audiosource.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_bus.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_error.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_fader.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_filter.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_queue.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
@@ -515,6 +530,7 @@ CMakeFiles/p.dir/src/core.cpp.o: /home/sree/12-weeks-projects/Galaxy\ shooter/sr
   /usr/include/asm/posix_types.h \
   /usr/include/asm/posix_types_64.h \
   /usr/include/asm/types.h \
+  /usr/include/assert.h \
   /usr/include/bits/atomic_wide_counter.h \
   /usr/include/bits/byteswap.h \
   /usr/include/bits/cpu-set.h \
@@ -1309,8 +1325,6 @@ shooter/libs/libSDL2_ttf.a:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdint.h:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/16/include/sm4intrin.h:
-
 /usr/lib/libc_nonshared.a:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/sm3intrin.h:
@@ -1543,13 +1557,21 @@ CMakeFiles/p.dir/src/core.cpp.o:
 
 /usr/include/c++/16/math.h:
 
-CMakeFiles/p.dir/src/api.cpp.o:
+/usr/include/c++/16/limits:
 
-/usr/include/bits/types/sigset_t.h:
+/usr/lib/gcc/x86_64-pc-linux-gnu/16/include/prfchwintrin.h:
 
-/usr/include/c++/16/bits/memory_resource.h:
+/usr/include/c++/16/istream:
 
-/usr/include/bits/types/mbstate_t.h:
+/usr/lib/gcc/x86_64-pc-linux-gnu/16/include/tbmintrin.h:
+
+/usr/include/c++/16/iostream:
+
+/usr/include/c++/16/ios:
+
+/usr/include/c++/16/tr1/riemann_zeta.tcc:
+
+/usr/include/c++/16/initializer_list:
 
 /usr/include/bits/types/clock_t.h:
 
@@ -1575,21 +1597,17 @@ CMakeFiles/p.dir/src/api.cpp.o:
 
 /usr/include/bits/stdlib-float.h:
 
+/usr/include/c++/16/ext/type_traits.h:
+
+/usr/include/bits/thread-shared-types.h:
+
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/crtendS.o:
 
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/types/__mbstate_t.h:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/16/include/mwaitintrin.h:
-
-/usr/include/c++/16/tr1/poly_hermite.tcc:
-
-/usr/include/bits/types/error_t.h:
-
 /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_stdinc.h:
-
-/home/sree/12-weeks-projects/Galaxy\ shooter/include/core.hpp:
 
 /usr/include/c++/16/x86_64-pc-linux-gnu/bits/c++config.h:
 
@@ -1598,12 +1616,6 @@ CMakeFiles/p.dir/src/api.cpp.o:
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/fxsrintrin.h:
 
 /usr/include/bits/select.h:
-
-/home/sree/12-weeks-projects/Galaxy\ shooter/include/close_code.h:
-
-/usr/include/sys/select.h:
-
-/usr/include/c++/16/ext/aligned_buffer.h:
 
 /usr/include/c++/16/bits/atomic_base.h:
 
@@ -1673,14 +1685,6 @@ CMakeFiles/p.dir/src/api.cpp.o:
 
 /usr/include/c++/16/bits/atomic_lockfree_defines.h:
 
-/usr/include/bits/stdint-intn.h:
-
-/usr/include/bits/types/clockid_t.h:
-
-/usr/include/bits/types/struct_FILE.h:
-
-/usr/include/c++/16/bits/stdexcept_except.h:
-
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/pconfigintrin.h:
 
 /usr/include/asm/types.h:
@@ -1691,11 +1695,19 @@ CMakeFiles/p.dir/src/api.cpp.o:
 
 /usr/include/asm-generic/errno-base.h:
 
+/home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_error.h:
+
+/usr/include/assert.h:
+
 /usr/include/bits/types.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/avxneconvertintrin.h:
 
 /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_keycode.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/16/include/avx512dqintrin.h:
+
+/usr/include/alloca.h:
 
 /usr/include/bits/timesize.h:
 
@@ -1709,11 +1721,11 @@ CMakeFiles/p.dir/src/api.cpp.o:
 
 /usr/include/bits/posix2_lim.h:
 
+/home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_image.h:
+
+/home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_queue.h:
+
 /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_hidapi.h:
-
-/usr/include/bits/types/cookie_io_functions_t.h:
-
-/home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_events.h:
 
 /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_atomic.h:
 
@@ -1757,9 +1769,13 @@ CMakeFiles/p.dir/src/api.cpp.o:
 
 /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL.h:
 
-/home/sree/12-weeks-projects/Galaxy\ shooter/src/api.cpp:
+/usr/include/c++/16/iosfwd:
 
-/home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_locale.h:
+/usr/include/bits/types/__sigset_t.h:
+
+/home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_filesystem.h:
+
+/home/sree/12-weeks-projects/Galaxy\ shooter/src/api.cpp:
 
 /usr/include/asm/posix_types_64.h:
 
@@ -1767,17 +1783,13 @@ CMakeFiles/p.dir/src/api.cpp.o:
 
 /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_log.h:
 
+/home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_audiosource.h:
+
 /usr/include/c++/16/bits/exception_ptr.h:
 
 /usr/include/bits/time.h:
 
 /usr/include/asm/posix_types.h:
-
-/usr/include/stdc-predef.h:
-
-/usr/include/c++/16/x86_64-pc-linux-gnu/bits/os_defines.h:
-
-/home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_touch.h:
 
 /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_keyboard.h:
 
@@ -1785,13 +1797,15 @@ CMakeFiles/p.dir/src/api.cpp.o:
 
 /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_blendmode.h:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/16/include/xtestintrin.h:
+/usr/include/stdc-predef.h:
 
-/home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_loadso.h:
+/usr/include/c++/16/x86_64-pc-linux-gnu/bits/os_defines.h:
 
-/usr/include/c++/16/bits/atomic_wait.h:
+/home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_touch.h:
 
-/usr/include/bits/pthreadtypes-arch.h:
+/home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_filter.h:
+
+/usr/include/c++/16/cstdio:
 
 /usr/include/stdint.h:
 
@@ -1813,21 +1827,7 @@ CMakeFiles/p.dir/src/api.cpp.o:
 
 /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_endian.h:
 
-/usr/include/bits/thread-shared-types.h:
-
-/usr/include/c++/16/ext/type_traits.h:
-
-/usr/include/c++/16/tr1/riemann_zeta.tcc:
-
-/usr/include/c++/16/initializer_list:
-
 /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_pixels.h:
-
-/usr/include/bits/types/locale_t.h:
-
-/usr/include/ctype.h:
-
-/usr/include/c++/16/bits/stl_tempbuf.h:
 
 /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_misc.h:
 
@@ -1838,6 +1838,20 @@ CMakeFiles/p.dir/src/api.cpp.o:
 /usr/include/c++/16/bits/allocator.h:
 
 /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_messagebox.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/16/include/xtestintrin.h:
+
+/usr/include/c++/16/bits/atomic_wait.h:
+
+/usr/include/bits/pthreadtypes-arch.h:
+
+/home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_loadso.h:
+
+CMakeFiles/p.dir/src/api.cpp.o:
+
+/usr/include/bits/types/sigset_t.h:
+
+/usr/include/c++/16/bits/memory_resource.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/avx512bwintrin.h:
 
@@ -1868,6 +1882,8 @@ CMakeFiles/p.dir/src/api.cpp.o:
 /home/sree/12-weeks-projects/Galaxy\ shooter/include/begin_code.h:
 
 /usr/include/c++/16/backward/auto_ptr.h:
+
+/home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_fader.h:
 
 /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_config_unix.h:
 
@@ -1923,11 +1939,23 @@ CMakeFiles/p.dir/src/api.cpp.o:
 
 /usr/include/c++/16/cerrno:
 
+/home/sree/12-weeks-projects/Galaxy\ shooter/include/core.hpp:
+
+/usr/include/bits/wchar.h:
+
+/usr/include/bits/waitstatus.h:
+
+/usr/include/bits/types/struct___jmp_buf_tag.h:
+
 /usr/include/bits/local_lim.h:
 
 /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_quit.h:
 
 /usr/include/c++/16/bits/ostream_print.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/16/include/sm4intrin.h:
+
+/home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_bus.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/sha512intrin.h:
 
@@ -1935,17 +1963,39 @@ CMakeFiles/p.dir/src/api.cpp.o:
 
 /usr/include/c++/16/bits/new_allocator.h:
 
-/home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_image.h:
+/home/sree/12-weeks-projects/Galaxy\ shooter/include/close_code.h:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/16/include/avx512dqintrin.h:
+/home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_events.h:
 
-/usr/include/alloca.h:
+/usr/include/bits/types/cookie_io_functions_t.h:
 
-/usr/include/bits/types/struct___jmp_buf_tag.h:
+/usr/include/sys/select.h:
 
-/usr/include/bits/waitstatus.h:
+/usr/include/c++/16/ext/aligned_buffer.h:
 
-/usr/include/bits/wchar.h:
+/home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_locale.h:
+
+/usr/include/bits/stdint-intn.h:
+
+/usr/include/bits/types/clockid_t.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/16/include/mwaitintrin.h:
+
+/usr/include/c++/16/tr1/poly_hermite.tcc:
+
+/usr/include/bits/types/error_t.h:
+
+/usr/include/bits/types/locale_t.h:
+
+/usr/include/ctype.h:
+
+/usr/include/c++/16/bits/stl_tempbuf.h:
+
+/usr/include/bits/types/mbstate_t.h:
+
+/usr/include/bits/types/struct_FILE.h:
+
+/usr/include/c++/16/bits/stdexcept_except.h:
 
 /usr/include/bits/types/struct_sched_param.h:
 
@@ -2017,11 +2067,15 @@ shooter/libs/libSDL2.a:
 
 /usr/include/c++/16/bits/basic_string.h:
 
-/usr/include/c++/16/ios:
-
 /usr/include/bits/types/__fpos_t.h:
 
 /usr/include/c++/16/bits/char_traits.h:
+
+/usr/include/c++/16/ext/string_conversions.h:
+
+/usr/include/bits/atomic_wide_counter.h:
+
+/usr/include/c++/16/bits/charconv.h:
 
 /usr/include/gnu/stubs.h:
 
@@ -2089,6 +2143,8 @@ shooter/libs/libSDL2.a:
 
 /usr/include/c++/16/bits/new_except.h:
 
+/home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud.h:
+
 /usr/include/c++/16/bits/postypes.h:
 
 /usr/include/c++/16/bits/range_access.h:
@@ -2108,8 +2164,6 @@ shooter/libs/libSDL2.a:
 /usr/include/c++/16/bits/align.h:
 
 /usr/include/c++/16/cmath:
-
-/usr/include/c++/16/limits:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/avx2intrin.h:
 
@@ -2153,12 +2207,6 @@ shooter/libs/libSDL2.a:
 
 /usr/include/c++/16/bits/streambuf.tcc:
 
-/usr/include/bits/types/__sigset_t.h:
-
-/home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_filesystem.h:
-
-/usr/include/c++/16/iosfwd:
-
 /usr/include/c++/16/bits/streambuf_iterator.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/tsxldtrkintrin.h:
@@ -2187,8 +2235,6 @@ shooter/libs/libSDL2.a:
 
 /usr/include/c++/16/cstddef:
 
-/usr/include/c++/16/cstdio:
-
 /usr/include/linux/sched/types.h:
 
 /usr/include/c++/16/cwchar:
@@ -2206,17 +2252,3 @@ shooter/libs/libSDL2.a:
 /usr/include/c++/16/exception:
 
 /usr/include/c++/16/ext/concurrence.h:
-
-/usr/include/bits/atomic_wide_counter.h:
-
-/usr/include/c++/16/bits/charconv.h:
-
-/usr/include/c++/16/ext/string_conversions.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/16/include/tbmintrin.h:
-
-/usr/include/c++/16/iostream:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/16/include/prfchwintrin.h:
-
-/usr/include/c++/16/istream:

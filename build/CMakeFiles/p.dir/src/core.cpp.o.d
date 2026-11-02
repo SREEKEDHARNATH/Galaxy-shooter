@@ -365,4 +365,13 @@ CMakeFiles/p.dir/src/core.cpp.o: \
  /usr/include/c++/16/pstl/glue_memory_defs.h \
  /usr/include/c++/16/pstl/execution_defs.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_ttf.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud.h \
+ /usr/include/assert.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_filter.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_fader.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_audiosource.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_bus.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_queue.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_error.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/listeners.hpp

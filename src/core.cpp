@@ -12,6 +12,7 @@
 #include "api.hpp"
 #include "listeners.hpp"
 
+core::api::soundsystem soloud;
 namespace core {
     std::pair<bool, const char*> init(){
         int img_flags = IMG_INIT_PNG || IMG_INIT_JPG;

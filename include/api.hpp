@@ -5,6 +5,7 @@
 #include <memory>
 #include <string>
 #include "SDL_ttf.h"
+#include "soloud/soloud.h"
 
 namespace core::api {
     class image{
@@ -36,5 +37,11 @@ namespace core::api {
             void setText(font& f,const char* txt,SDL_Color fg={255,255,255,255});
             void draw();
             const char* get();
+    };
+    class soundsystem{
+        std::shared_ptr<SoLoud::Soloud> soloud;
+        public:
+            soundsystem();
+            std::shared_ptr<SoLoud::Soloud> get();
     };
 }
