@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/sree/12-weeks-projects/Galaxy shooter/src/core.cpp" "CMakeFiles/p.dir/src/core.cpp.o" "gcc" "CMakeFiles/p.dir/src/core.cpp.o.d"
   "/home/sree/12-weeks-projects/Galaxy shooter/src/main.cpp" "CMakeFiles/p.dir/src/main.cpp.o" "gcc" "CMakeFiles/p.dir/src/main.cpp.o.d"
   "" "p" "gcc" "CMakeFiles/p.dir/link.d"
   )
