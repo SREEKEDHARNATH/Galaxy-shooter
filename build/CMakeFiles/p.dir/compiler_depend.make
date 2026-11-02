@@ -54,6 +54,7 @@ CMakeFiles/p.dir/src/core.cpp.o: /home/sree/12-weeks-projects/Galaxy\ shooter/sr
   /home/sree/12-weeks-projects/Galaxy\ shooter/include/begin_code.h \
   /home/sree/12-weeks-projects/Galaxy\ shooter/include/close_code.h \
   /home/sree/12-weeks-projects/Galaxy\ shooter/include/core.hpp \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/listeners.hpp \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
@@ -425,6 +426,181 @@ CMakeFiles/p.dir/src/core.cpp.o: /home/sree/12-weeks-projects/Galaxy\ shooter/sr
   /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/xsavesintrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/xtestintrin.h
 
+CMakeFiles/p.dir/src/listeners.cpp.o: /home/sree/12-weeks-projects/Galaxy\ shooter/src/listeners.cpp \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_blendmode.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_config.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_config_unix.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_endian.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_error.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_events.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_gamecontroller.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_gesture.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_guid.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_joystick.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_keyboard.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_keycode.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_mouse.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_mutex.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_pixels.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_platform.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_quit.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_rect.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_rwops.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_scancode.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_sensor.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_stdinc.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_surface.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_touch.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_video.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/begin_code.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/close_code.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/listeners.hpp \
+  /usr/include/alloca.h \
+  /usr/include/bits/atomic_wide_counter.h \
+  /usr/include/bits/byteswap.h \
+  /usr/include/bits/endian.h \
+  /usr/include/bits/endianness.h \
+  /usr/include/bits/floatn-common.h \
+  /usr/include/bits/floatn.h \
+  /usr/include/bits/flt-eval-method.h \
+  /usr/include/bits/fp-fast.h \
+  /usr/include/bits/fp-logb.h \
+  /usr/include/bits/iscanonical.h \
+  /usr/include/bits/libc-header-start.h \
+  /usr/include/bits/libm-simd-decl-stubs.h \
+  /usr/include/bits/local_lim.h \
+  /usr/include/bits/long-double.h \
+  /usr/include/bits/math-vector.h \
+  /usr/include/bits/mathcalls-helper-functions.h \
+  /usr/include/bits/mathcalls-macros.h \
+  /usr/include/bits/mathcalls-narrow.h \
+  /usr/include/bits/mathcalls.h \
+  /usr/include/bits/posix1_lim.h \
+  /usr/include/bits/posix2_lim.h \
+  /usr/include/bits/pthread_stack_min-dynamic.h \
+  /usr/include/bits/pthreadtypes-arch.h \
+  /usr/include/bits/pthreadtypes.h \
+  /usr/include/bits/select.h \
+  /usr/include/bits/stdint-intn.h \
+  /usr/include/bits/stdint-least.h \
+  /usr/include/bits/stdint-uintn.h \
+  /usr/include/bits/stdio_lim.h \
+  /usr/include/bits/stdlib-float.h \
+  /usr/include/bits/struct_mutex.h \
+  /usr/include/bits/struct_rwlock.h \
+  /usr/include/bits/thread-shared-types.h \
+  /usr/include/bits/time64.h \
+  /usr/include/bits/timesize.h \
+  /usr/include/bits/types.h \
+  /usr/include/bits/types/FILE.h \
+  /usr/include/bits/types/__FILE.h \
+  /usr/include/bits/types/__fpos64_t.h \
+  /usr/include/bits/types/__fpos_t.h \
+  /usr/include/bits/types/__locale_t.h \
+  /usr/include/bits/types/__mbstate_t.h \
+  /usr/include/bits/types/__sigset_t.h \
+  /usr/include/bits/types/clock_t.h \
+  /usr/include/bits/types/clockid_t.h \
+  /usr/include/bits/types/cookie_io_functions_t.h \
+  /usr/include/bits/types/locale_t.h \
+  /usr/include/bits/types/mbstate_t.h \
+  /usr/include/bits/types/sigset_t.h \
+  /usr/include/bits/types/struct_FILE.h \
+  /usr/include/bits/types/struct_timespec.h \
+  /usr/include/bits/types/struct_timeval.h \
+  /usr/include/bits/types/time_t.h \
+  /usr/include/bits/types/timer_t.h \
+  /usr/include/bits/types/wint_t.h \
+  /usr/include/bits/typesizes.h \
+  /usr/include/bits/uintn-identity.h \
+  /usr/include/bits/uio_lim.h \
+  /usr/include/bits/waitflags.h \
+  /usr/include/bits/waitstatus.h \
+  /usr/include/bits/wchar.h \
+  /usr/include/bits/wordsize.h \
+  /usr/include/bits/xopen_lim.h \
+  /usr/include/c++/16/backward/binders.h \
+  /usr/include/c++/16/bit \
+  /usr/include/c++/16/bits/concept_check.h \
+  /usr/include/c++/16/bits/cpp_type_traits.h \
+  /usr/include/c++/16/bits/exception.h \
+  /usr/include/c++/16/bits/exception_defines.h \
+  /usr/include/c++/16/bits/iterator_concepts.h \
+  /usr/include/c++/16/bits/move.h \
+  /usr/include/c++/16/bits/new_except.h \
+  /usr/include/c++/16/bits/predefined_ops.h \
+  /usr/include/c++/16/bits/ptr_traits.h \
+  /usr/include/c++/16/bits/ranges_cmp.h \
+  /usr/include/c++/16/bits/requires_hosted.h \
+  /usr/include/c++/16/bits/specfun.h \
+  /usr/include/c++/16/bits/std_abs.h \
+  /usr/include/c++/16/bits/stdexcept_throw.h \
+  /usr/include/c++/16/bits/stdexcept_throwfwd.h \
+  /usr/include/c++/16/bits/stl_algobase.h \
+  /usr/include/c++/16/bits/stl_construct.h \
+  /usr/include/c++/16/bits/stl_function.h \
+  /usr/include/c++/16/bits/stl_iterator.h \
+  /usr/include/c++/16/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/16/bits/stl_iterator_base_types.h \
+  /usr/include/c++/16/bits/stl_pair.h \
+  /usr/include/c++/16/bits/utility.h \
+  /usr/include/c++/16/bits/version.h \
+  /usr/include/c++/16/cmath \
+  /usr/include/c++/16/compare \
+  /usr/include/c++/16/concepts \
+  /usr/include/c++/16/cstdlib \
+  /usr/include/c++/16/debug/assertions.h \
+  /usr/include/c++/16/debug/debug.h \
+  /usr/include/c++/16/ext/numeric_traits.h \
+  /usr/include/c++/16/ext/type_traits.h \
+  /usr/include/c++/16/limits \
+  /usr/include/c++/16/math.h \
+  /usr/include/c++/16/new \
+  /usr/include/c++/16/pstl/pstl_config.h \
+  /usr/include/c++/16/stdlib.h \
+  /usr/include/c++/16/tr1/bessel_function.tcc \
+  /usr/include/c++/16/tr1/beta_function.tcc \
+  /usr/include/c++/16/tr1/ell_integral.tcc \
+  /usr/include/c++/16/tr1/exp_integral.tcc \
+  /usr/include/c++/16/tr1/gamma.tcc \
+  /usr/include/c++/16/tr1/hypergeometric.tcc \
+  /usr/include/c++/16/tr1/legendre_function.tcc \
+  /usr/include/c++/16/tr1/modified_bessel_func.tcc \
+  /usr/include/c++/16/tr1/poly_hermite.tcc \
+  /usr/include/c++/16/tr1/poly_laguerre.tcc \
+  /usr/include/c++/16/tr1/riemann_zeta.tcc \
+  /usr/include/c++/16/tr1/special_function_util.h \
+  /usr/include/c++/16/type_traits \
+  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/c++config.h \
+  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/cpu_defines.h \
+  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/os_defines.h \
+  /usr/include/ctype.h \
+  /usr/include/endian.h \
+  /usr/include/features-time64.h \
+  /usr/include/features.h \
+  /usr/include/gnu/stubs-64.h \
+  /usr/include/gnu/stubs.h \
+  /usr/include/inttypes.h \
+  /usr/include/limits.h \
+  /usr/include/linux/limits.h \
+  /usr/include/math.h \
+  /usr/include/stdc-predef.h \
+  /usr/include/stdint.h \
+  /usr/include/stdio.h \
+  /usr/include/stdlib.h \
+  /usr/include/string.h \
+  /usr/include/strings.h \
+  /usr/include/sys/cdefs.h \
+  /usr/include/sys/select.h \
+  /usr/include/sys/types.h \
+  /usr/include/wchar.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/float.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/limits.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdarg.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stddef.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdint.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/syslimits.h
+
 CMakeFiles/p.dir/src/main.cpp.o: /home/sree/12-weeks-projects/Galaxy\ shooter/src/main.cpp \
   /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_blendmode.h \
   /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_config.h \
@@ -607,6 +783,7 @@ p: /home/sree/12-weeks-projects/Galaxy \
   /usr/lib/libm.so.6 \
   /usr/lib/libmvec.so.1 \
   CMakeFiles/p.dir/src/core.cpp.o \
+  CMakeFiles/p.dir/src/listeners.cpp.o \
   CMakeFiles/p.dir/src/main.cpp.o \
   shooter/libs/libSDL2.a \
   shooter/libs/libSDL2_image.a \
@@ -621,6 +798,8 @@ shooter/libs/libsoloud.a:
 shooter/libs/libSDL2_image.a:
 
 CMakeFiles/p.dir/src/main.cpp.o:
+
+CMakeFiles/p.dir/src/listeners.cpp.o:
 
 /usr/lib/libmvec.so.1:
 
@@ -812,6 +991,8 @@ shooter/libs/libbox2d.a:
 
 /usr/include/linux/errno.h:
 
+/home/sree/12-weeks-projects/Galaxy\ shooter/src/listeners.cpp:
+
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/x86gprintrin.h:
 
 /usr/include/inttypes.h:
@@ -864,7 +1045,9 @@ CMakeFiles/p.dir/src/core.cpp.o:
 
 /usr/include/c++/16/tr1/poly_laguerre.tcc:
 
-/usr/include/bits/types/struct_timespec.h:
+/usr/lib/gcc/x86_64-pc-linux-gnu/16/include/mwaitxintrin.h:
+
+/usr/include/c++/16/tr1/modified_bessel_func.tcc:
 
 /usr/include/bits/types/struct_sched_param.h:
 
@@ -873,10 +1056,6 @@ CMakeFiles/p.dir/src/core.cpp.o:
 /usr/include/c++/16/bits/memory_resource.h:
 
 /usr/include/bits/types/mbstate_t.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/16/include/mwaitxintrin.h:
-
-/usr/include/c++/16/tr1/modified_bessel_func.tcc:
 
 /usr/include/bits/types/clock_t.h:
 
@@ -1010,6 +1189,16 @@ CMakeFiles/p.dir/src/core.cpp.o:
 
 /usr/include/c++/16/bits/stl_pair.h:
 
+/home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_system.h:
+
+/home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_error.h:
+
+/usr/include/bits/byteswap.h:
+
+/usr/include/c++/16/stdlib.h:
+
+/usr/include/bits/types/struct_timespec.h:
+
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/avx2intrin.h:
 
 /usr/include/bits/mathcalls-narrow.h:
@@ -1104,8 +1293,6 @@ CMakeFiles/p.dir/src/core.cpp.o:
 
 /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_pixels.h:
 
-/home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_system.h:
-
 /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_locale.h:
 
 /usr/include/stdc-predef.h:
@@ -1180,6 +1367,16 @@ CMakeFiles/p.dir/src/core.cpp.o:
 
 /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_shape.h:
 
+/usr/include/gnu/stubs.h:
+
+/usr/include/c++/16/bits/std_abs.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/16/include/amxint8intrin.h:
+
+/usr/include/c++/16/bits/cxxabi_forced.h:
+
+/usr/include/c++/16/cwctype:
+
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/avx512vnniintrin.h:
 
 /usr/include/features.h:
@@ -1209,12 +1406,6 @@ CMakeFiles/p.dir/src/core.cpp.o:
 /usr/include/bits/stdint-uintn.h:
 
 /usr/include/asm/errno.h:
-
-/home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_error.h:
-
-/usr/include/bits/byteswap.h:
-
-/usr/include/c++/16/stdlib.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/sha512intrin.h:
 
@@ -1301,16 +1492,6 @@ shooter/libs/libSDL2.a:
 /usr/include/bits/types/__fpos_t.h:
 
 /usr/include/c++/16/bits/char_traits.h:
-
-/usr/include/gnu/stubs.h:
-
-/usr/include/c++/16/bits/std_abs.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/16/include/amxint8intrin.h:
-
-/usr/include/c++/16/bits/cxxabi_forced.h:
-
-/usr/include/c++/16/cwctype:
 
 /usr/include/c++/16/bits/concept_check.h:
 
@@ -1402,9 +1583,9 @@ shooter/libs/libSDL2.a:
 
 /usr/include/c++/16/bits/streambuf.tcc:
 
-/home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_filesystem.h:
-
 /usr/include/bits/types/__sigset_t.h:
+
+/home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_filesystem.h:
 
 /usr/include/c++/16/iosfwd:
 
@@ -1495,6 +1676,8 @@ shooter/libs/libSDL2.a:
 /usr/include/c++/16/new:
 
 /usr/include/bits/libm-simd-decl-stubs.h:
+
+/home/sree/12-weeks-projects/Galaxy\ shooter/include/listeners.hpp:
 
 /usr/include/c++/16/tr1/bessel_function.tcc:
 

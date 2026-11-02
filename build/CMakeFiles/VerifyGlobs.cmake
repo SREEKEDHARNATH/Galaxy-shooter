@@ -5,6 +5,7 @@
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/sree/12-weeks-projects/Galaxy shooter/src/*.cpp")
 set(OLD_GLOB
   "/home/sree/12-weeks-projects/Galaxy shooter/src/core.cpp"
+  "/home/sree/12-weeks-projects/Galaxy shooter/src/listeners.cpp"
   "/home/sree/12-weeks-projects/Galaxy shooter/src/main.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")

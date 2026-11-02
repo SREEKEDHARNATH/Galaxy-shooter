@@ -261,6 +261,8 @@ CMakeFiles/p.dir/src/core.cpp.o: \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_misc.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_error.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_events.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_keycode.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_mouse.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_render.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_video.h \
  /usr/include/c++/16/iostream /usr/include/c++/16/ostream \
@@ -339,4 +341,5 @@ CMakeFiles/p.dir/src/core.cpp.o: \
  /usr/include/c++/16/bits/ostream_print.h \
  /usr/include/c++/16/bits/ostream.tcc /usr/include/c++/16/istream \
  /usr/include/c++/16/bits/istream.tcc /usr/include/c++/16/utility \
- /usr/include/c++/16/bits/stl_relops.h /usr/include/c++/16/bits/intcmp.h
+ /usr/include/c++/16/bits/stl_relops.h /usr/include/c++/16/bits/intcmp.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/listeners.hpp

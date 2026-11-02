@@ -2,10 +2,13 @@
 #include "SDL.h"
 #include "SDL_error.h"
 #include "SDL_events.h"
+#include "SDL_keycode.h"
+#include "SDL_mouse.h"
 #include "SDL_render.h"
 #include "SDL_video.h"
 #include <iostream>
 #include <utility>
+#include "listeners.hpp"
 
 namespace core {
     std::pair<bool, const char*> init(){
@@ -39,12 +42,31 @@ namespace core {
                     case SDL_QUIT:
                         running=false;
                         break;
+                    case SDL_KEYUP:
+                    case SDL_KEYDOWN:
+                        keylistener::reg(e.key);
+                        break;
+                    case SDL_MOUSEMOTION:
+                        mouselistener::reg(e.motion);
+                        break;
+                    case SDL_MOUSEWHEEL:
+                        mouselistener::reg(e.wheel);
+                        break;
+                    case SDL_MOUSEBUTTONUP:
+                    case SDL_MOUSEBUTTONDOWN:
+                        mouselistener::reg(e.button);
+                        break;
                 }
+            }
+            if (keylistener::isPressed(SDLK_ESCAPE)){
+                running=false;
             }
 
             SDL_RenderClear(getRenderer());
             SDL_RenderPresent(getRenderer());
             
+            keylistener::update();
+            mouselistener::update();
             SDL_Delay(16);
         }
     }
