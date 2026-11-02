@@ -50,6 +50,7 @@ CMakeFiles/p.dir/src/api.cpp.o: /home/sree/12-weeks-projects/Galaxy\ shooter/src
   /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_thread.h \
   /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_timer.h \
   /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_touch.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_ttf.h \
   /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_version.h \
   /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_video.h \
   /home/sree/12-weeks-projects/Galaxy\ shooter/include/api.hpp \
@@ -494,6 +495,7 @@ CMakeFiles/p.dir/src/core.cpp.o: /home/sree/12-weeks-projects/Galaxy\ shooter/sr
   /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_thread.h \
   /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_timer.h \
   /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_touch.h \
+  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_ttf.h \
   /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_version.h \
   /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_video.h \
   /home/sree/12-weeks-projects/Galaxy\ shooter/include/api.hpp \
@@ -1537,6 +1539,10 @@ CMakeFiles/p.dir/src/core.cpp.o:
 
 /usr/include/c++/16/memory:
 
+/usr/include/c++/16/x86_64-pc-linux-gnu/bits/c++allocator.h:
+
+/usr/include/c++/16/math.h:
+
 CMakeFiles/p.dir/src/api.cpp.o:
 
 /usr/include/bits/types/sigset_t.h:
@@ -1739,6 +1745,8 @@ CMakeFiles/p.dir/src/api.cpp.o:
 
 /usr/include/c++/16/bits/stl_pair.h:
 
+/home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_gamecontroller.h:
+
 /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_error.h:
 
 /usr/include/bits/types/struct_timespec.h:
@@ -1794,6 +1802,8 @@ CMakeFiles/p.dir/src/api.cpp.o:
 /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_rect.h:
 
 /usr/include/c++/16/bits/allocated_ptr.h:
+
+/home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_ttf.h:
 
 /usr/include/bits/timex.h:
 
@@ -1936,8 +1946,6 @@ CMakeFiles/p.dir/src/api.cpp.o:
 /usr/include/bits/waitstatus.h:
 
 /usr/include/bits/wchar.h:
-
-/home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_gamecontroller.h:
 
 /usr/include/bits/types/struct_sched_param.h:
 
@@ -2212,7 +2220,3 @@ shooter/libs/libSDL2.a:
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/prfchwintrin.h:
 
 /usr/include/c++/16/istream:
-
-/usr/include/c++/16/x86_64-pc-linux-gnu/bits/c++allocator.h:
-
-/usr/include/c++/16/math.h:

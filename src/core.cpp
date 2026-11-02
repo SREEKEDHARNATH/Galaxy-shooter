@@ -5,6 +5,7 @@
 #include "SDL_image.h"
 #include "SDL_keycode.h"
 #include "SDL_render.h"
+#include "SDL_ttf.h"
 #include "SDL_video.h"
 #include <iostream>
 #include <utility>
@@ -19,6 +20,9 @@ namespace core {
         }
         if ((IMG_Init(img_flags) & img_flags) != img_flags){
             return {false, IMG_GetError()};
+        }
+        if (TTF_Init()){
+            return {false,TTF_GetError()};
         }
         getWindow()=SDL_CreateWindow(getTitle(), getX(), getY(), getW(), getH(), SDL_WINDOW_HIDDEN);
         if (!getWindow()){
@@ -41,6 +45,8 @@ namespace core {
         bool running=true;
         api::image img("", false);
         img.set(255, 0,0,32,32);
+        api::font f("assets/fonts/font.ttf");
+        api::text t(f, "Hello guys", {0,255,0,255});
 
         SDL_ShowWindow(getWindow());
         while (running){
@@ -71,6 +77,7 @@ namespace core {
 
             SDL_RenderClear(getRenderer());
             img.draw();
+            t.draw();
             SDL_RenderPresent(getRenderer());
             
             keylistener::update();
@@ -85,6 +92,7 @@ namespace core {
         if (getRenderer()){
             SDL_DestroyWindow(getWindow());
         }
+        TTF_Quit();
         IMG_Quit();
         SDL_Quit();
     }

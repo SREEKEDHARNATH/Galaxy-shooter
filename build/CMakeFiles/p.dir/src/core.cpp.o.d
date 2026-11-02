@@ -265,6 +265,7 @@ CMakeFiles/p.dir/src/core.cpp.o: \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_keycode.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_render.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_ttf.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_video.h \
  /usr/include/c++/16/iostream /usr/include/c++/16/ostream \
  /usr/include/c++/16/bits/ostream.h /usr/include/c++/16/ios \
@@ -363,4 +364,5 @@ CMakeFiles/p.dir/src/core.cpp.o: \
  /usr/include/c++/16/bits/ranges_algobase.h \
  /usr/include/c++/16/pstl/glue_memory_defs.h \
  /usr/include/c++/16/pstl/execution_defs.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_ttf.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/listeners.hpp

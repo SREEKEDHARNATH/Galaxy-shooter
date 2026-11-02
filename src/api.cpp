@@ -3,9 +3,11 @@
 #include "SDL_pixels.h"
 #include "SDL_render.h"
 #include "SDL_surface.h"
+#include "SDL_ttf.h"
 #include "core.hpp"
 #include "SDL_image.h"
 #include <iostream>
+#include <memory>
 
 namespace core::api {
     image::image(const char* name, bool load, bool autoset){
@@ -27,6 +29,7 @@ namespace core::api {
     void image::set(SDL_Texture *tex){
         if (tex){
             ptr.reset(tex, SDL_DestroyTexture);
+            recallibrate();
         }
     }
     void image::set(Uint8 r, Uint8 g, Uint8 b, int w, int h, Uint8 depth){
@@ -52,18 +55,79 @@ namespace core::api {
         }
     }
     void image::draw(){
-        if (ptr.get()){
+        if (get()){
             if (dstrect.w<=0 || dstrect.h<=0){
-                SDL_RenderCopy(getRenderer(), ptr.get(), NULL, NULL);
+                SDL_RenderCopy(getRenderer(), get().get(), NULL, NULL);
             }
             else {
-                SDL_RenderCopy(getRenderer(), ptr.get(), NULL, &dstrect);
+                SDL_RenderCopy(getRenderer(), get().get(), NULL, &dstrect);
             }
         }
     }
     void image::recallibrate(){
-        if (ptr.get()){
-            SDL_QueryTexture(ptr.get(), NULL, NULL, &dstrect.w, &dstrect.h);
+        if (get().get()){
+            SDL_QueryTexture(get().get(), NULL, NULL, &dstrect.w, &dstrect.h);
         }
+    }
+    std::shared_ptr<SDL_Texture> image::get(){
+        return ptr;
+    }
+
+    font::font(const char *name, int ptsize, bool load){
+        if (load){
+            auto pt= TTF_OpenFont(name, ptsize);
+            if (!pt){
+                std::cerr << TTF_GetError() << "\n";
+                return;
+            }
+            ptr.reset(pt, TTF_CloseFont);
+        }
+    }
+    void font::set(const char *name, int ptsize){
+        auto pt=TTF_OpenFont(name, ptsize);
+        if (!pt){
+            std::cerr << TTF_GetError() << "\n";
+            return;
+        }
+        ptr.reset(pt, TTF_CloseFont);
+    }
+    void font::set(TTF_Font *fnt){
+        if (fnt){
+            ptr.reset(fnt, TTF_CloseFont);
+        }
+    }
+    std::shared_ptr<TTF_Font> font::get(){
+        return ptr;
+    }
+
+    text::text(font& fnt, const char* txt,SDL_Color fg, bool load) : i("", false){
+        f.reset();
+        setText(fnt,txt,fg);
+    }
+    void text::setText(font& f, const char *txt,SDL_Color fg){
+        if (f.get()){
+            st=txt;
+            if (st.empty()){
+                std::cerr << "Text cant be empty\n";
+                return;
+            }
+            auto srf=TTF_RenderUTF8_Blended(f.get().get(), get(), fg);
+            if (!srf){
+                std::cerr << TTF_GetError() << "\n";
+                return;
+            }
+            auto t=SDL_CreateTextureFromSurface(getRenderer(), srf);
+            if (!t){
+                std::cerr << SDL_GetError() << "\n";
+                return;
+            }
+            i.set(t);
+        }
+    }
+    void text::draw(){
+        i.draw();
+    }
+    const char* text::get(){
+        return st.c_str();
     }
 }
