@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/sree/12-weeks-projects/Galaxy shooter/build",
+  "command": "/usr/sbin/c++  -I\"/home/sree/12-weeks-projects/Galaxy shooter/include\" -std=gnu++20 -o CMakeFiles/p.dir/src/main.cpp.o -c \"/home/sree/12-weeks-projects/Galaxy shooter/src/main.cpp\"",
+  "file": "/home/sree/12-weeks-projects/Galaxy shooter/src/main.cpp",
+  "output": "CMakeFiles/p.dir/src/main.cpp.o"
+}
+]

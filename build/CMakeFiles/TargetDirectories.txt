@@ -1,0 +1,3 @@
+/home/sree/12-weeks-projects/Galaxy shooter/build/CMakeFiles/p.dir
+/home/sree/12-weeks-projects/Galaxy shooter/build/CMakeFiles/edit_cache.dir
+/home/sree/12-weeks-projects/Galaxy shooter/build/CMakeFiles/rebuild_cache.dir
