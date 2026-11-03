@@ -1,12 +1,12 @@
 #include "api.hpp"
 #include "SDL_error.h"
+#include "SDL_mixer.h"
 #include "SDL_pixels.h"
 #include "SDL_render.h"
 #include "SDL_surface.h"
 #include "SDL_ttf.h"
 #include "core.hpp"
 #include "SDL_image.h"
-#include "soloud/soloud.h"
 #include <iostream>
 #include <memory>
 #include <string>
@@ -133,22 +133,76 @@ namespace core::api {
         return st.c_str();
     }
 
-    void delS(SoLoud::Soloud* ptr){
-        if (ptr){
-            ptr->deinit();
-            delete ptr;
-        }
-    }
-    soundsystem::soundsystem(){
-        auto* pt = new SoLoud::Soloud();
-        soloud.reset(pt, delS);
-        std::string res = soloud->getErrorString(soloud->init());
-        if (res != "No error"){
-            std::cerr << res << "\n";
+    soundeffect::soundeffect(const char* name){
+        auto pt = Mix_LoadWAV(name);
+        if (!pt){
+            std::cerr << Mix_GetError() << "\n";
             return;
         }
+        ptr.reset(pt, Mix_FreeChunk);
     }
-    std::shared_ptr<SoLoud::Soloud> soundsystem::get(){
-        return soloud;
+    void soundeffect::play(){
+        if (ptr.get()){
+            if (vol > 100){
+                vol = 100;
+            }
+            else if (vol < 0){
+                vol = 0;
+            }
+            if (vol != ptr.get()->volume){
+                Mix_VolumeChunk(ptr.get(), vol);
+            }
+            auto rescode = Mix_PlayChannel(-1, ptr.get(), false);
+            if (rescode==-1){
+                std::cerr << Mix_GetError() << "\n";
+            }
+        }
+    }
+    std::shared_ptr<Mix_Chunk> soundeffect::get(){
+        return ptr;
+    }
+
+    music::music(const char* name){
+        auto pt = Mix_LoadMUS(name);
+        if (!pt){
+            std::cerr << Mix_GetError() << "\n";
+            return;
+        }
+        ptr.reset(pt, Mix_FreeMusic);
+    }
+    void music::play(bool loops){
+        if (ptr.get()){
+            if (vol > 100){
+                vol = 100;
+            }
+            if (vol < 0){
+                vol = 0;
+            }
+            if (vol != Mix_GetMusicVolume(ptr.get())){
+                Mix_VolumeMusic(vol);
+            }
+            auto rescode = Mix_PlayMusic(ptr.get(), loops);
+            if (rescode==-1){
+                std::cerr << Mix_GetError() << "\n";
+            }
+        }
+    }
+    void music::pause(){
+        if (ptr.get()){
+            Mix_PauseMusic();
+        }
+    }
+    void music::resume(){
+        if (ptr.get()){
+            Mix_ResumeMusic();
+        }
+    }
+    void music::halt(){
+        if (ptr.get()){
+            Mix_HaltMusic();
+        }
+    }
+    std::shared_ptr<Mix_Music> music::get(){
+        return ptr;
     }
 }

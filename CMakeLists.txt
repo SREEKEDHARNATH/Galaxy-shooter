@@ -26,9 +26,9 @@ set_target_properties(SDL2_TTF PROPERTIES
     INTERFACE_LINK_LIBRARIES "FREETYPE;SDL2"
 )
 
-add_library(soloud STATIC IMPORTED)
-set_target_properties(soloud PROPERTIES
-    IMPORTED_LOCATION "${CMAKE_CURRENT_SOURCE_DIR}/libs/libsoloud.a"
+add_library(SDL2_MIXER STATIC IMPORTED)
+set_target_properties(SDL2_MIXER PROPERTIES
+    IMPORTED_LOCATION "${CMAKE_CURRENT_SOURCE_DIR}/libs/libSDL2_mixer.a"
 )
 
 add_library(box2d STATIC IMPORTED)
@@ -47,10 +47,10 @@ target_include_directories(p PRIVATE
 target_link_options(p PRIVATE -static-libstdc++ -static-libgcc)
 target_link_libraries(p PRIVATE
     m
-    soloud
     box2d
     SDL2
     SDL2_IMAGE
     FREETYPE
     SDL2_TTF
+    SDL2_MIXER
 )

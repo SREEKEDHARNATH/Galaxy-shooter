@@ -6,12 +6,12 @@ p: \
   CMakeFiles/p.dir/src/core.cpp.o \
   CMakeFiles/p.dir/src/listeners.cpp.o \
   CMakeFiles/p.dir/src/main.cpp.o \
-  /home/sree/12-weeks-projects/Galaxy shooter/libs/libsoloud.a \
   /home/sree/12-weeks-projects/Galaxy shooter/libs/libbox2d.a \
   /home/sree/12-weeks-projects/Galaxy shooter/libs/libSDL2.a \
   /home/sree/12-weeks-projects/Galaxy shooter/libs/libSDL2_image.a \
   /home/sree/12-weeks-projects/Galaxy shooter/libs/libfreetype.a \
   /home/sree/12-weeks-projects/Galaxy shooter/libs/libSDL2_ttf.a \
+  /home/sree/12-weeks-projects/Galaxy shooter/libs/libSDL2_mixer.a \
   /home/sree/12-weeks-projects/Galaxy shooter/libs/libSDL2.a \
   /home/sree/12-weeks-projects/Galaxy shooter/libs/libfreetype.a \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16/libstdc++.a \
@@ -51,8 +51,6 @@ CMakeFiles/p.dir/src/listeners.cpp.o:
 
 CMakeFiles/p.dir/src/main.cpp.o:
 
-/home/sree/12-weeks-projects/Galaxy shooter/libs/libsoloud.a:
-
 /home/sree/12-weeks-projects/Galaxy shooter/libs/libbox2d.a:
 
 /home/sree/12-weeks-projects/Galaxy shooter/libs/libSDL2.a:
@@ -62,6 +60,8 @@ CMakeFiles/p.dir/src/main.cpp.o:
 /home/sree/12-weeks-projects/Galaxy shooter/libs/libfreetype.a:
 
 /home/sree/12-weeks-projects/Galaxy shooter/libs/libSDL2_ttf.a:
+
+/home/sree/12-weeks-projects/Galaxy shooter/libs/libSDL2_mixer.a:
 
 /home/sree/12-weeks-projects/Galaxy shooter/libs/libSDL2.a:
 

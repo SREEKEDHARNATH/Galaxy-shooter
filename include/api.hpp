@@ -1,11 +1,11 @@
 #pragma once
 
+#include "SDL_mixer.h"
 #include "SDL_render.h"
 #include "SDL_stdinc.h"
 #include <memory>
 #include <string>
 #include "SDL_ttf.h"
-#include "soloud/soloud.h"
 
 namespace core::api {
     class image{
@@ -38,10 +38,24 @@ namespace core::api {
             void draw();
             const char* get();
     };
-    class soundsystem{
-        std::shared_ptr<SoLoud::Soloud> soloud;
+    class soundeffect{
+        std::shared_ptr<Mix_Chunk> ptr;
         public:
-            soundsystem();
-            std::shared_ptr<SoLoud::Soloud> get();
+            int vol=80;
+            soundeffect(const char* name);
+            void play();
+            std::shared_ptr<Mix_Chunk> get();
     };
+    class music{
+        std::shared_ptr<Mix_Music> ptr;
+        public:
+            int vol=50;
+            music(const char* name);
+            void play(bool loops=true);
+            void pause();
+            void resume();
+            void halt();
+            std::shared_ptr<Mix_Music> get();
+    };
+    
 }

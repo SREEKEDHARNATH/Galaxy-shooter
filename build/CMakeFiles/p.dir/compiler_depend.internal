@@ -33,6 +33,7 @@ CMakeFiles/p.dir/src/api.cpp.o
  /home/sree/12-weeks-projects/Galaxy shooter/include/SDL_messagebox.h
  /home/sree/12-weeks-projects/Galaxy shooter/include/SDL_metal.h
  /home/sree/12-weeks-projects/Galaxy shooter/include/SDL_misc.h
+ /home/sree/12-weeks-projects/Galaxy shooter/include/SDL_mixer.h
  /home/sree/12-weeks-projects/Galaxy shooter/include/SDL_mouse.h
  /home/sree/12-weeks-projects/Galaxy shooter/include/SDL_mutex.h
  /home/sree/12-weeks-projects/Galaxy shooter/include/SDL_pixels.h
@@ -58,13 +59,6 @@ CMakeFiles/p.dir/src/api.cpp.o
  /home/sree/12-weeks-projects/Galaxy shooter/include/begin_code.h
  /home/sree/12-weeks-projects/Galaxy shooter/include/close_code.h
  /home/sree/12-weeks-projects/Galaxy shooter/include/core.hpp
- /home/sree/12-weeks-projects/Galaxy shooter/include/soloud/soloud.h
- /home/sree/12-weeks-projects/Galaxy shooter/include/soloud/soloud_audiosource.h
- /home/sree/12-weeks-projects/Galaxy shooter/include/soloud/soloud_bus.h
- /home/sree/12-weeks-projects/Galaxy shooter/include/soloud/soloud_error.h
- /home/sree/12-weeks-projects/Galaxy shooter/include/soloud/soloud_fader.h
- /home/sree/12-weeks-projects/Galaxy shooter/include/soloud/soloud_filter.h
- /home/sree/12-weeks-projects/Galaxy shooter/include/soloud/soloud_queue.h
  /usr/include/alloca.h
  /usr/include/asm-generic/bitsperlong.h
  /usr/include/asm-generic/errno-base.h
@@ -77,7 +71,6 @@ CMakeFiles/p.dir/src/api.cpp.o
  /usr/include/asm/posix_types.h
  /usr/include/asm/posix_types_64.h
  /usr/include/asm/types.h
- /usr/include/assert.h
  /usr/include/bits/atomic_wide_counter.h
  /usr/include/bits/byteswap.h
  /usr/include/bits/cpu-set.h
@@ -487,6 +480,7 @@ CMakeFiles/p.dir/src/core.cpp.o
  /home/sree/12-weeks-projects/Galaxy shooter/include/SDL_messagebox.h
  /home/sree/12-weeks-projects/Galaxy shooter/include/SDL_metal.h
  /home/sree/12-weeks-projects/Galaxy shooter/include/SDL_misc.h
+ /home/sree/12-weeks-projects/Galaxy shooter/include/SDL_mixer.h
  /home/sree/12-weeks-projects/Galaxy shooter/include/SDL_mouse.h
  /home/sree/12-weeks-projects/Galaxy shooter/include/SDL_mutex.h
  /home/sree/12-weeks-projects/Galaxy shooter/include/SDL_pixels.h
@@ -513,13 +507,6 @@ CMakeFiles/p.dir/src/core.cpp.o
  /home/sree/12-weeks-projects/Galaxy shooter/include/close_code.h
  /home/sree/12-weeks-projects/Galaxy shooter/include/core.hpp
  /home/sree/12-weeks-projects/Galaxy shooter/include/listeners.hpp
- /home/sree/12-weeks-projects/Galaxy shooter/include/soloud/soloud.h
- /home/sree/12-weeks-projects/Galaxy shooter/include/soloud/soloud_audiosource.h
- /home/sree/12-weeks-projects/Galaxy shooter/include/soloud/soloud_bus.h
- /home/sree/12-weeks-projects/Galaxy shooter/include/soloud/soloud_error.h
- /home/sree/12-weeks-projects/Galaxy shooter/include/soloud/soloud_fader.h
- /home/sree/12-weeks-projects/Galaxy shooter/include/soloud/soloud_filter.h
- /home/sree/12-weeks-projects/Galaxy shooter/include/soloud/soloud_queue.h
  /usr/include/alloca.h
  /usr/include/asm-generic/bitsperlong.h
  /usr/include/asm-generic/errno-base.h
@@ -532,7 +519,6 @@ CMakeFiles/p.dir/src/core.cpp.o
  /usr/include/asm/posix_types.h
  /usr/include/asm/posix_types_64.h
  /usr/include/asm/types.h
- /usr/include/assert.h
  /usr/include/bits/atomic_wide_counter.h
  /usr/include/bits/byteswap.h
  /usr/include/bits/cpu-set.h
@@ -1278,8 +1264,8 @@ p
  /home/sree/12-weeks-projects/Galaxy shooter/build/CMakeFiles/p.dir/src/main.cpp.o
  /home/sree/12-weeks-projects/Galaxy shooter/build/shooter/libs/libSDL2.a
  /home/sree/12-weeks-projects/Galaxy shooter/build/shooter/libs/libSDL2_image.a
+ /home/sree/12-weeks-projects/Galaxy shooter/build/shooter/libs/libSDL2_mixer.a
  /home/sree/12-weeks-projects/Galaxy shooter/build/shooter/libs/libSDL2_ttf.a
  /home/sree/12-weeks-projects/Galaxy shooter/build/shooter/libs/libbox2d.a
  /home/sree/12-weeks-projects/Galaxy shooter/build/shooter/libs/libfreetype.a
- /home/sree/12-weeks-projects/Galaxy shooter/build/shooter/libs/libsoloud.a
 

@@ -144,12 +144,12 @@ p : CMakeFiles/p.dir/src/listeners.cpp.o
 p : CMakeFiles/p.dir/src/main.cpp.o
 p : CMakeFiles/p.dir/build.make
 p : CMakeFiles/p.dir/compiler_depend.ts
-p : /home/sree/12-weeks-projects/Galaxy\ shooter/libs/libsoloud.a
 p : /home/sree/12-weeks-projects/Galaxy\ shooter/libs/libbox2d.a
 p : /home/sree/12-weeks-projects/Galaxy\ shooter/libs/libSDL2.a
 p : /home/sree/12-weeks-projects/Galaxy\ shooter/libs/libSDL2_image.a
 p : /home/sree/12-weeks-projects/Galaxy\ shooter/libs/libfreetype.a
 p : /home/sree/12-weeks-projects/Galaxy\ shooter/libs/libSDL2_ttf.a
+p : /home/sree/12-weeks-projects/Galaxy\ shooter/libs/libSDL2_mixer.a
 p : /home/sree/12-weeks-projects/Galaxy\ shooter/libs/libSDL2.a
 p : /home/sree/12-weeks-projects/Galaxy\ shooter/libs/libfreetype.a
 p : CMakeFiles/p.dir/link.txt

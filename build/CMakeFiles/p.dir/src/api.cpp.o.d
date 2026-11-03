@@ -2,7 +2,7 @@ CMakeFiles/p.dir/src/api.cpp.o: \
  /home/sree/12-weeks-projects/Galaxy\ shooter/src/api.cpp \
  /usr/include/stdc-predef.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/api.hpp \
- /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_render.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_mixer.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_stdinc.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_config.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_platform.h \
@@ -106,11 +106,17 @@ CMakeFiles/p.dir/src/api.cpp.o: \
  /usr/include/c++/16/tr1/poly_laguerre.tcc \
  /usr/include/c++/16/tr1/riemann_zeta.tcc \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/float.h \
- /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_rect.h \
- /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_error.h \
- /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_pixels.h \
- /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_endian.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_rwops.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_error.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_audio.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_endian.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_mutex.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_thread.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_atomic.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_version.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_render.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_rect.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_pixels.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_video.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_surface.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_blendmode.h \
@@ -211,10 +217,6 @@ CMakeFiles/p.dir/src/api.cpp.o: \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_main.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_assert.h \
- /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_atomic.h \
- /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_audio.h \
- /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_mutex.h \
- /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_thread.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_clipboard.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_cpuinfo.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/immintrin.h \
@@ -350,26 +352,16 @@ CMakeFiles/p.dir/src/api.cpp.o: \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_shape.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_system.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_timer.h \
- /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_version.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_locale.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_misc.h \
- /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud.h \
- /usr/include/assert.h \
- /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_filter.h \
- /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud.h \
- /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_fader.h \
- /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_audiosource.h \
- /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_bus.h \
- /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_queue.h \
- /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud_error.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_error.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_mixer.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_pixels.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_render.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_surface.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_ttf.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/core.hpp \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_image.h \
- /home/sree/12-weeks-projects/Galaxy\ shooter/include/soloud/soloud.h \
  /usr/include/c++/16/iostream /usr/include/c++/16/ostream \
  /usr/include/c++/16/bits/ostream_print.h \
  /usr/include/c++/16/bits/ostream.tcc /usr/include/c++/16/istream \

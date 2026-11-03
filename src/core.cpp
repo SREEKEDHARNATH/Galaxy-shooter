@@ -11,11 +11,12 @@
 #include <utility>
 #include "api.hpp"
 #include "listeners.hpp"
+#include "SDL_mixer.h"
 
-core::api::soundsystem soloud;
 namespace core {
     std::pair<bool, const char*> init(){
         int img_flags = IMG_INIT_PNG || IMG_INIT_JPG;
+        int sound_flags = MIX_INIT_MP3;
         if (SDL_Init(SDL_INIT_EVERYTHING)){
             return {false, SDL_GetError()};
         }
@@ -24,6 +25,12 @@ namespace core {
         }
         if (TTF_Init()){
             return {false,TTF_GetError()};
+        }
+        if ((Mix_Init(sound_flags) & sound_flags) != sound_flags){
+            return {false,Mix_GetError()};
+        }
+        if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024)){
+            return {false,Mix_GetError()};
         }
         getWindow()=SDL_CreateWindow(getTitle(), getX(), getY(), getW(), getH(), SDL_WINDOW_HIDDEN);
         if (!getWindow()){
@@ -75,7 +82,6 @@ namespace core {
             if (keylistener::isPressed(SDLK_ESCAPE)){
                 running=false;
             }
-
             SDL_RenderClear(getRenderer());
             img.draw();
             t.draw();
@@ -93,6 +99,8 @@ namespace core {
         if (getRenderer()){
             SDL_DestroyWindow(getWindow());
         }
+        Mix_CloseAudio();
+        Mix_Quit();
         TTF_Quit();
         IMG_Quit();
         SDL_Quit();
