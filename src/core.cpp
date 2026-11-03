@@ -10,6 +10,8 @@
 #include <iostream>
 #include <utility>
 #include "api.hpp"
+#include "box2d/box2d.h"
+#include "box2d/types.h"
 #include "listeners.hpp"
 #include "SDL_mixer.h"
 #include "physics.hpp"
@@ -57,6 +59,8 @@ namespace core {
         api::font f("assets/fonts/font.ttf");
         api::text t(f, "Hello guys", {0,255,0,255});
         physics::world world;
+        physics::body body(world.get(), {0,0}, b2_dynamicBody);
+        body.attachBox(1, 1);
 
         SDL_ShowWindow(getWindow());
         while (running){
@@ -85,6 +89,9 @@ namespace core {
                 running=false;
             }
             world.simulate();
+            auto pos = b2Body_GetPosition(body.get());
+            img.dstrect.x=pos.x*32;
+            img.dstrect.y=pos.y*32;
             SDL_RenderClear(getRenderer());
             img.draw();
             t.draw();

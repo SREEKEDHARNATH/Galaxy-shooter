@@ -366,8 +366,16 @@ CMakeFiles/p.dir/src/core.cpp.o: \
  /usr/include/c++/16/pstl/glue_memory_defs.h \
  /usr/include/c++/16/pstl/execution_defs.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_ttf.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/box2d/box2d.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/box2d/base.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdbool.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/box2d/config.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/box2d/collision.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/box2d/math_types.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/box2d/constants.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/box2d/math_functions.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/box2d/id.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/box2d/types.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/listeners.hpp \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_mixer.h \
- /home/sree/12-weeks-projects/Galaxy\ shooter/include/physics.hpp \
- /home/sree/12-weeks-projects/Galaxy\ shooter/include/box2d/id.h \
- /home/sree/12-weeks-projects/Galaxy\ shooter/include/box2d/math_types.h
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/physics.hpp
