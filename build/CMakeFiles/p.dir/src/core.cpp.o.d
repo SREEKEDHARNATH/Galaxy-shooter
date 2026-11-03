@@ -264,6 +264,7 @@ CMakeFiles/p.dir/src/core.cpp.o: \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_image.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_keycode.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_rect.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_render.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_timer.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_ttf.h \
@@ -343,12 +344,19 @@ CMakeFiles/p.dir/src/core.cpp.o: \
  /usr/include/c++/16/bits/basic_ios.tcc \
  /usr/include/c++/16/bits/ostream_print.h \
  /usr/include/c++/16/bits/ostream.tcc /usr/include/c++/16/istream \
- /usr/include/c++/16/bits/istream.tcc /usr/include/c++/16/utility \
- /usr/include/c++/16/bits/stl_relops.h /usr/include/c++/16/bits/intcmp.h \
+ /usr/include/c++/16/bits/istream.tcc /usr/include/c++/16/random \
+ /usr/include/c++/16/cstdint /usr/include/c++/16/bits/random.h \
  /usr/include/c++/16/vector /usr/include/c++/16/bits/stl_uninitialized.h \
  /usr/include/c++/16/bits/stl_vector.h \
  /usr/include/c++/16/bits/stl_bvector.h \
  /usr/include/c++/16/bits/vector.tcc \
+ /usr/include/c++/16/bits/uniform_int_dist.h \
+ /usr/include/c++/16/x86_64-pc-linux-gnu/bits/opt_random.h \
+ /usr/include/c++/16/bits/random.tcc /usr/include/c++/16/numeric \
+ /usr/include/c++/16/bits/stl_numeric.h \
+ /usr/include/c++/16/pstl/glue_numeric_defs.h \
+ /usr/include/c++/16/pstl/execution_defs.h /usr/include/c++/16/utility \
+ /usr/include/c++/16/bits/stl_relops.h /usr/include/c++/16/bits/intcmp.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/api.hpp \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_mixer.h \
  /usr/include/c++/16/memory /usr/include/c++/16/bits/stl_tempbuf.h \
@@ -368,7 +376,6 @@ CMakeFiles/p.dir/src/core.cpp.o: \
  /usr/include/c++/16/bits/ranges_uninitialized.h \
  /usr/include/c++/16/bits/ranges_algobase.h \
  /usr/include/c++/16/pstl/glue_memory_defs.h \
- /usr/include/c++/16/pstl/execution_defs.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_ttf.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/box2d/box2d.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/box2d/base.h \

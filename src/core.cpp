@@ -4,11 +4,13 @@
 #include "SDL_events.h"
 #include "SDL_image.h"
 #include "SDL_keycode.h"
+#include "SDL_rect.h"
 #include "SDL_render.h"
 #include "SDL_timer.h"
 #include "SDL_ttf.h"
 #include "SDL_video.h"
 #include <iostream>
+#include <random>
 #include <utility>
 #include <vector>
 #include "api.hpp"
@@ -18,6 +20,43 @@
 #include "SDL_mixer.h"
 #include "physics.hpp"
 
+class asteroid{
+    public:
+        int speed=4;
+        float size=1;
+        core::api::image im;
+        int x=0,y=0;
+        asteroid(SDL_Texture* tex, int x1=0, int y1=0, float sz=1, int spd=4) : im("",false), x(x1), y(y1), size(sz), speed(spd){ 
+            im.set(tex);
+            im.dstrect.w*=size;
+            im.dstrect.h*=size;
+        }
+        bool update(int x1=0, int y1=0, float sz=1, int spd=4){
+            y+=speed;
+            im.dstrect.x=x;
+            im.dstrect.y=y;
+            if (outofbounds()) {
+                reset(x1, y1, sz, spd);
+                return true;
+            }
+            return false;
+        }
+        void draw(){
+            im.draw();
+        }
+        void reset(int x1=0, int y1=0, float sz=1, int spd=4){
+            x=x1;
+            y=y1;
+            size=sz;
+            speed=spd;
+            im.recallibrate();
+            im.dstrect.w*=size;
+            im.dstrect.h*=size;
+        }
+        bool outofbounds(){
+            return (y+im.dstrect.w)>core::getH();
+        }
+};
 namespace core {
     std::pair<bool, const char*> init(){
         int img_flags = IMG_INIT_PNG || IMG_INIT_JPG;
@@ -61,7 +100,7 @@ namespace core {
         api::image ship("assets/images/ship.png");
         api::image bullet("assets/images/bullet.png");
         physics::world world({0,5});
-        physics::body body(world.get(), {0,0}, b2_dynamicBody);
+        physics::body body(world.get(), {0,400/32.0f}, b2_dynamicBody);
         body.attachBox(ship.dstrect.w/32.0f, ship.dstrect.h/32.0f);
 
         std::vector<std::pair<int, int>> bullets(10);
@@ -69,6 +108,18 @@ namespace core {
         constexpr float bulletintervelmax=9000;
         float bulletintervel=bulletintervelmax;
         float bulletspeed=5;
+
+        api::image aster("assets/images/asteroid.png");
+        api::image asterhit("assets/images/asteroid-hit.png");
+        api::image asterexplode("assets/images/asteroid-explode.png");
+        
+        asteroid ast(aster.get().get(), 400);
+        bool hit=false,explode=false;
+        int hitcount=0;
+
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<int> distrib(0,(getW()/100));
 
         SDL_ShowWindow(getWindow());
         while (running){
@@ -130,9 +181,38 @@ namespace core {
             if ((ship.dstrect.y+32)< 0 || (ship.dstrect.y+ship.dstrect.h-32)>getH()){
                 running=false;
             }
-
+            for (int i=0;i<bullets.size();i++){
+                SDL_Rect r={bullets[i].first, bullets[i].second, bullet.dstrect.w, bullet.dstrect.h};
+                if (SDL_HasIntersection(&r, &ast.im.dstrect)){
+                    hit=true;
+                    i=bullets.size();
+                    hitcount++;
+                }
+            }
+            ast.update(distrib(gen)*100);
+            if (hitcount>=ast.size){
+                ast.reset(distrib(gen)*100);
+                explode=true;
+                hitcount=0;
+            }
+            if (SDL_HasIntersection(&ast.im.dstrect, &ship.dstrect)){
+                running=false;
+            }
             SDL_RenderClear(getRenderer());
             bg.draw();
+            if (explode){
+                asterexplode.dstrect=ast.im.dstrect;
+                asterexplode.draw();
+            }
+            else if (hit){
+                asterhit.dstrect=ast.im.dstrect;
+                asterhit.draw();
+            }
+            else {
+                ast.draw();
+            }
+            hit=false;
+            explode=false;
             ship.draw();
 
             for (int i=0;i<bullets.size();i++){
