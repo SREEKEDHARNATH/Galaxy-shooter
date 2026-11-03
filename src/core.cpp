@@ -12,6 +12,7 @@
 #include "api.hpp"
 #include "listeners.hpp"
 #include "SDL_mixer.h"
+#include "physics.hpp"
 
 namespace core {
     std::pair<bool, const char*> init(){
@@ -55,6 +56,7 @@ namespace core {
         img.set(255, 0,0,32,32);
         api::font f("assets/fonts/font.ttf");
         api::text t(f, "Hello guys", {0,255,0,255});
+        physics::world world;
 
         SDL_ShowWindow(getWindow());
         while (running){
@@ -82,6 +84,7 @@ namespace core {
             if (keylistener::isPressed(SDLK_ESCAPE)){
                 running=false;
             }
+            world.simulate();
             SDL_RenderClear(getRenderer());
             img.draw();
             t.draw();

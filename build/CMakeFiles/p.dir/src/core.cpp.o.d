@@ -367,4 +367,7 @@ CMakeFiles/p.dir/src/core.cpp.o: \
  /usr/include/c++/16/pstl/execution_defs.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_ttf.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/listeners.hpp \
- /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_mixer.h
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_mixer.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/physics.hpp \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/box2d/id.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/box2d/math_types.h

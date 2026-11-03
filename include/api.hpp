@@ -57,5 +57,4 @@ namespace core::api {
             void halt();
             std::shared_ptr<Mix_Music> get();
     };
-    
 }

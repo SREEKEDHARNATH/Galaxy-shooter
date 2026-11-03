@@ -8,6 +8,7 @@ set(OLD_GLOB
   "/home/sree/12-weeks-projects/Galaxy shooter/src/core.cpp"
   "/home/sree/12-weeks-projects/Galaxy shooter/src/listeners.cpp"
   "/home/sree/12-weeks-projects/Galaxy shooter/src/main.cpp"
+  "/home/sree/12-weeks-projects/Galaxy shooter/src/physics.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
