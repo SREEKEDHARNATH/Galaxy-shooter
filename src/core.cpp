@@ -5,10 +5,12 @@
 #include "SDL_image.h"
 #include "SDL_keycode.h"
 #include "SDL_render.h"
+#include "SDL_timer.h"
 #include "SDL_ttf.h"
 #include "SDL_video.h"
 #include <iostream>
 #include <utility>
+#include <vector>
 #include "api.hpp"
 #include "box2d/box2d.h"
 #include "box2d/types.h"
@@ -54,16 +56,23 @@ namespace core {
 
         SDL_Event e;
         bool running=true;
-        api::image img("", false);
-        img.set(255, 0,0,32,32);
         api::font f("assets/fonts/font.ttf");
-        api::text t(f, "Hello guys", {0,255,0,255});
-        physics::world world;
+        api::image bg("assets/images/map.png", true, false);
+        api::image ship("assets/images/ship.png");
+        api::image bullet("assets/images/bullet.png");
+        physics::world world({0,5});
         physics::body body(world.get(), {0,0}, b2_dynamicBody);
-        body.attachBox(1, 1);
+        body.attachBox(ship.dstrect.w/32.0f, ship.dstrect.h/32.0f);
+
+        std::vector<std::pair<int, int>> bullets(10);
+        float start,dt=0;
+        constexpr float bulletintervelmax=9000;
+        float bulletintervel=bulletintervelmax;
+        float bulletspeed=5;
 
         SDL_ShowWindow(getWindow());
         while (running){
+            start=SDL_GetTicks64();
             while (SDL_PollEvent(&e)) {
                 switch (e.type) {
                     case SDL_QUIT:
@@ -88,17 +97,61 @@ namespace core {
             if (keylistener::isPressed(SDLK_ESCAPE)){
                 running=false;
             }
+            if (keylistener::isDown(SDLK_RIGHT)){
+                b2Body_ApplyForceToCenter(body.get(), {40,0}, false);
+            }
+            if (keylistener::isDown(SDLK_LEFT)){
+                b2Body_ApplyForceToCenter(body.get(), {-40,0}, false);
+            }
+            if (keylistener::isDown(SDLK_UP)){
+                b2Body_ApplyForceToCenter(body.get(), {0,-60}, false);
+            }
+            if (keylistener::isDown(SDLK_DOWN)){
+                b2Body_ApplyForceToCenter(body.get(), {-0,20}, false);
+            }
+            
             world.simulate();
             auto pos = b2Body_GetPosition(body.get());
-            img.dstrect.x=pos.x*32;
-            img.dstrect.y=pos.y*32;
+
+            ship.dstrect.x=pos.x*32;
+            ship.dstrect.y=pos.y*32;
+
+            bullet.dstrect.x=(pos.x*32)+(ship.dstrect.w/2.0f);
+            bullet.dstrect.y=pos.y*32;
+            bulletintervel-=(dt*1000);
+            if (bulletintervel<0){
+                bulletintervel=bulletintervelmax;
+                bullets.push_back({bullet.dstrect.x, bullet.dstrect.y});
+            }
+
+            if ((ship.dstrect.x+32)< 0 || (ship.dstrect.x+ship.dstrect.w-32)>getW()){
+                running=false;
+            }
+            if ((ship.dstrect.y+32)< 0 || (ship.dstrect.y+ship.dstrect.h-32)>getH()){
+                running=false;
+            }
+
             SDL_RenderClear(getRenderer());
-            img.draw();
-            t.draw();
+            bg.draw();
+            ship.draw();
+
+            for (int i=0;i<bullets.size();i++){
+                bullets[i].second-=bulletspeed;
+                bullet.dstrect.x=bullets[i].first;
+                bullet.dstrect.y=bullets[i].second;
+                
+                bullet.draw();
+                if (bullets[i].second < 0){
+                    bullets.erase(bullets.begin()+i);
+                    i--;
+                }
+            }
             SDL_RenderPresent(getRenderer());
             
             keylistener::update();
             mouselistener::update();
+
+            dt=SDL_GetTicks64()-start;
             SDL_Delay(16);
         }
     }

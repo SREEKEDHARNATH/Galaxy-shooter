@@ -265,6 +265,7 @@ CMakeFiles/p.dir/src/core.cpp.o: \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_keycode.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_render.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_timer.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_ttf.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_video.h \
  /usr/include/c++/16/iostream /usr/include/c++/16/ostream \
@@ -344,10 +345,13 @@ CMakeFiles/p.dir/src/core.cpp.o: \
  /usr/include/c++/16/bits/ostream.tcc /usr/include/c++/16/istream \
  /usr/include/c++/16/bits/istream.tcc /usr/include/c++/16/utility \
  /usr/include/c++/16/bits/stl_relops.h /usr/include/c++/16/bits/intcmp.h \
+ /usr/include/c++/16/vector /usr/include/c++/16/bits/stl_uninitialized.h \
+ /usr/include/c++/16/bits/stl_vector.h \
+ /usr/include/c++/16/bits/stl_bvector.h \
+ /usr/include/c++/16/bits/vector.tcc \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/api.hpp \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_mixer.h \
  /usr/include/c++/16/memory /usr/include/c++/16/bits/stl_tempbuf.h \
- /usr/include/c++/16/bits/stl_uninitialized.h \
  /usr/include/c++/16/bits/stl_raw_storage_iter.h \
  /usr/include/c++/16/bits/align.h /usr/include/c++/16/bits/unique_ptr.h \
  /usr/include/c++/16/bits/shared_ptr.h \

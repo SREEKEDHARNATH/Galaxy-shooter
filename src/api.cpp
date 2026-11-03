@@ -16,7 +16,7 @@ namespace core::api {
         set(name, load, autoset);
     }
     void image::set(const char* name, bool load, bool autoset){
-        if (load && std::string(name).empty()){
+        if (load && !std::string(name).empty()){
             auto tex = IMG_LoadTexture(getRenderer(), name);
             if (!tex){
                 std::cerr << IMG_GetError() << "\n";
