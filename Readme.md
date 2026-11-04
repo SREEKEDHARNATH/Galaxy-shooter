@@ -7,9 +7,44 @@ scroll to go up and down scroll dont reset untli you middle click
 
 Goal 100 score
 
+All arguements
+--------------
+
+-cheat=on    : enables cheats
+
+-mute=on     : mutes
+
+-file=on     : enables file saving
+
+-key=on      : enables keycontrols
+
+-mouse=on    : enables mousecontrols
+
+
+-cheat=off   : disables cheats
+
+-mute=off    : unmutes
+
+-file=off    : disables file saving 
+
+-key=off     : disables keycontrols
+
+-mouse=off   : disables mousecontrols
+
+-verbose=off : disables logging of arguements
+
+
+-discard-arguements : disables all arguements provided
+
+Credits
+--------
+
+
+
 i have trimmed the laser sound i have kept the orginal
 
-Music/Sound Effect by <a href="https://pixabay.com/users/noahbroah-53114341/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=474600">Noah Hansen</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=474600">Pixabay</a>
+Music/Sound Effect by <a href="https://pixabay.com/users/noahbroah-53114341/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=474600">Noah Hansen</a> from <a href="https://pixabay.com//?utm_source=link-attribution&
+utm_medium=referral&utm_campaign=music&utm_content=474600">Pixabay</a>
 
 Music/Sound Effect by <a href="https://pixabay.com/users/u_7hpxkdroz2-54033570/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=461600">u_7hpxkdroz2</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=461600">Pixabay</a>
 

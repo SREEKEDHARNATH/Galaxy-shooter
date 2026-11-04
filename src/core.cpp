@@ -97,12 +97,114 @@ namespace core {
             std::cerr << i.second << "\n";
             return;
         }
-        bool cheat=false;
-        if (argc-1){
-            if (std::string(argv[1])=="-cheat=on"){
-                cheat=true;
-                std::cout << "cheat is enabled file saving is disabled\n";
+        bool cheat=false,mute=false,file=true,mousecontrols=true,keycontrols=true,verbose=false;
+        if (argc>1){
+            for (int i=1;i<argc;i++){
+                if (std::string(argv[i])=="-discard-arguements"){
+                    cheat=false;
+                    mute=false;
+                    file=true;
+                    mousecontrols=true;
+                    keycontrols=true;
+                    verbose=false;
+                    i=argc;
+                }
+                else if (std::string(argv[i])=="-cheat=on"){
+                    cheat=true;
+                    file=false;
+                    if (verbose){
+                        std::cout << "cheat is enabled file saving is disabled :(\n";
+                    }
+                }
+                else if (std::string(argv[i])=="-cheat=off"){
+                    cheat=false;
+                    file=true;
+                    if (verbose){
+                        std::cout << "cheat is disabled file saving is enabled :)\n";
+                    }
+                }                
+                else if (std::string(argv[i])=="-mute=on"){
+                    mute=true;
+                    if (verbose){
+                        std::cout << "muting..... :(\n";
+                    }
+                }
+                else if (std::string(argv[i])=="-mute=off"){
+                    mute=false;
+                    if (verbose){
+                        std::cout << "unmuting..... :)\n";
+                    }
+                }
+                else if (std::string(argv[i])=="-file=on"){
+                    file=true;
+                    if (verbose){
+                        std::cout << "file saving on :)\n";
+                    }
+                }
+                else if (std::string(argv[i])=="-file=off"){
+                    file=false;
+                    if (verbose){
+                        std::cout << "file saving off :(\n";
+                    }
+                }
+                else if (std::string(argv[i])=="-key=on"){
+                    keycontrols=true;
+                    if (verbose){
+                        std::cout << "keycontrols! on :)\n";
+                    }
+                }
+                else if (std::string(argv[i])=="-key=off"){
+                    keycontrols=false;
+                    if (verbose){
+                        std::cout << "keycontrols! off :(\n";
+                    }
+                }
+                else if (std::string(argv[i])=="-mouse=on"){
+                    mousecontrols=true;
+                    if (verbose){
+                        std::cout << "mousecontrols! on :)\n";
+                    }
+                }
+                else if (std::string(argv[i])=="-mouse=off"){
+                    mousecontrols=false;
+                    if (verbose){
+                        std::cout << "mousecontrols! on :(\n";
+                    }
+                }
+                else if (std::string(argv[i])=="-verbose=on"){
+                    verbose=true;
+                    if (verbose){
+                        std::cout << "you made me on :)\n";
+                    }
+                }
+                else if (std::string(argv[i])=="-verbose=off"){
+                    verbose=false;
+                    if (verbose){
+                        std::cout << "noooooooo on :(\n";
+                    }
+                }
             }
+        }
+        if (cheat){
+            std::string s;
+            std::cout << "Why did you enable cheats:- ";
+            std::cin >> s;
+            std::cout << "You could have turned this off and win like a warrior:- ";
+            std::cin >> s;
+            std::cout << "You know right you could just restart:- ";
+            std::cin >> s;
+            std::cout << "Are you sure (y/n):- ";
+            std::cin >> s; 
+            if (s=="n" || s=="N"){
+                std::cout << "Great real warriors dont use cheats\n";
+                return;
+            }
+            else {
+                std::cout << ":(\n";
+            }
+        }
+        if (!mousecontrols && !keycontrols){
+            std::cout << "Warning:- All controls are disabled\n";
         }
         SDL_Event e;
         bool running=true;
@@ -184,17 +286,27 @@ namespace core {
         bool quit=false;
 
         api::soundeffect laser("assets/sounds/laser-trim.mp3");
-        laser.vol=3;
         api::soundeffect hitse("assets/sounds/hit.mp3");
-        hitse.vol=20;
         api::soundeffect explosion("assets/sounds/explosion.mp3");
-        explosion.vol=50;
-        
         api::music chill("assets/music/chill-bg.mp3");
-        chill.vol=128;
         api::music tuff("assets/music/tuff-bg.mp3");
-        tuff.vol=80;
-        chill.play();
+        
+        if (mute){
+            laser.vol=0;
+            hitse.vol=0;
+            explosion.vol=0;
+            chill.vol=0;
+            tuff.vol=0;
+        }
+        else {
+            laser.vol=3;
+            hitse.vol=20;
+            explosion.vol=50;
+            chill.vol=128;
+            tuff.vol=80;
+            chill.play();
+        }
+
         SDL_ShowWindow(getWindow());
         while (running){
             start=SDL_GetTicks64();
@@ -229,32 +341,33 @@ namespace core {
             mouse.x=mouselistener::getX();
             mouse.y=mouselistener::getY();
             if (play && !escape){
-                if (keylistener::isDown(SDLK_RIGHT) || keylistener::isDown(SDLK_d)){
-                    b2Body_ApplyForceToCenter(body.get(), {40,0}, false);
+                if (keycontrols){
+                    if (keylistener::isDown(SDLK_RIGHT) || keylistener::isDown(SDLK_d)){
+                        b2Body_ApplyForceToCenter(body.get(), {40,0}, false);
+                    }
+                    if (keylistener::isDown(SDLK_LEFT) || keylistener::isDown(SDLK_a)){
+                        b2Body_ApplyForceToCenter(body.get(), {-40,0}, false);
+                    }
+                    if (keylistener::isDown(SDLK_UP) || keylistener::isDown(SDLK_w)){
+                        b2Body_ApplyForceToCenter(body.get(), {0,-60}, false);
+                    }
+                    if (keylistener::isDown(SDLK_DOWN) || keylistener::isDown(SDLK_s)){
+                        b2Body_ApplyForceToCenter(body.get(), {-0,20}, false);
+                    }
                 }
-                else if (mouselistener::isDown(SDL_BUTTON_RIGHT)){
-                    b2Body_ApplyForceToCenter(body.get(), {40,0}, false);
-                }
-    
-                if (keylistener::isDown(SDLK_LEFT) || keylistener::isDown(SDLK_a)){
-                    b2Body_ApplyForceToCenter(body.get(), {-40,0}, false);
-                }
-                else if (mouselistener::isDown(SDL_BUTTON_LEFT)){
-                    b2Body_ApplyForceToCenter(body.get(), {-40,0}, false);
-                }
-    
-                if (keylistener::isDown(SDLK_UP) || keylistener::isDown(SDLK_w)){
-                    b2Body_ApplyForceToCenter(body.get(), {0,-60}, false);
-                }
-                else if (mouselistener::getScrly()<0){
-                    b2Body_ApplyForceToCenter(body.get(), {0,-40}, false);
-                }
-    
-                if (keylistener::isDown(SDLK_DOWN) || keylistener::isDown(SDLK_s)){
-                    b2Body_ApplyForceToCenter(body.get(), {-0,20}, false);
-                }
-                else if (mouselistener::getScrly()>0){
-                    b2Body_ApplyForceToCenter(body.get(), {-0,5}, false);
+                if (mousecontrols){
+                    if (mouselistener::isDown(SDL_BUTTON_RIGHT)){
+                        b2Body_ApplyForceToCenter(body.get(), {40,0}, false);
+                    }
+                    if (mouselistener::isDown(SDL_BUTTON_LEFT)){
+                        b2Body_ApplyForceToCenter(body.get(), {-40,0}, false);
+                    }
+                    if (mouselistener::getScrly()<0){
+                        b2Body_ApplyForceToCenter(body.get(), {0,-40}, false);
+                    }
+                    if (mouselistener::getScrly()>0){
+                        b2Body_ApplyForceToCenter(body.get(), {-0,5}, false);
+                    }
                 }
                 
                 ast.speed=astspeed;
@@ -303,7 +416,9 @@ namespace core {
                     ast.reset();
                     bullets.clear();
                     b2Body_SetLinearVelocity(body.get(), {0,0});
-                    chill.play();
+                    if (!mute){
+                        chill.play();
+                    }
                 }
                 else if ((ship.dstrect.y+32)< 0 || (ship.dstrect.y+ship.dstrect.h-32)>getH()){
                     play=false;
@@ -311,7 +426,9 @@ namespace core {
                     ast.reset();
                     bullets.clear();
                     b2Body_SetLinearVelocity(body.get(), {0,0});
-                    chill.play();
+                    if (!mute){
+                        chill.play();
+                    }
                 }
                 bool h=false;
                 for (int i=0;i<bullets.size();i++){
@@ -327,14 +444,18 @@ namespace core {
                     }
                 }
                 if (h){
-                    hitse.play();
+                    if (!mute){
+                        hitse.play();
+                    }
                 }
                 if (!explode){
                     ast.update(distrib(gen)*100);
                 }
                 if ((hitcount-5)>=ast.size){
                     explode=true;
-                    explosion.play();
+                    if (!mute){
+                        explosion.play();
+                    }
                 }
                 if (SDL_HasIntersection(&ast.im.dstrect, &ship.dstrect) && !explode && !cheat){
                     play=false;
@@ -342,7 +463,9 @@ namespace core {
                     ast.reset();
                     bullets.clear();
                     b2Body_SetLinearVelocity(body.get(), {0,0});
-                    chill.play();
+                    if (!mute){
+                        chill.play();
+                    }
                 }
             }
             SDL_RenderClear(getRenderer());
@@ -384,7 +507,9 @@ namespace core {
                 }
                 ship.draw();
                 if (bullets.size()){
-                    laser.play();
+                    if (!mute){
+                        laser.play();
+                    }
                 }
                 for (int i=0;i<bullets.size();i++){
                     bullets[i].second-=bulletspeed;
@@ -422,7 +547,9 @@ namespace core {
                                 ast.reset();
                                 bullets.clear();
                                 b2Body_SetLinearVelocity(body.get(), {0,0});
-                                chill.play();
+                                if (!mute){
+                                    chill.play();
+                                }
                             }
                             escape=false;
                         }
@@ -447,8 +574,10 @@ namespace core {
                         if (mouselistener::isPressed(SDL_BUTTON_LEFT)){
                             play=true;
                             score=0;
-                            chill.halt();
-                            tuff.play();
+                            if (!mute){
+                                chill.halt();
+                                tuff.play();
+                            }
                         }
                     }
                     else {
@@ -479,7 +608,7 @@ namespace core {
             dt=SDL_GetTicks64()-start;
             SDL_Delay(16);
         }
-        if (!cheat){
+        if (file){
             int pos=0;
             std::ifstream filein("scores.txt");
             if (filein.is_open()){

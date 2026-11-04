@@ -3,3 +3,8 @@
 3:- Played for 3 seconds, with Score:- 0
 4:- Played for 20 seconds, with Score:- 5
 5:- Played for 2 seconds, with Score:- 0
+6:- Played for 5 seconds, with Score:- 0
+7:- Played for 18 seconds, with Score:- 0
+8:- Played for 2 seconds, with Score:- 0
+9:- Played for 10 seconds, with Score:- 1
+10:- Played for 7 seconds, with Score:- 0
