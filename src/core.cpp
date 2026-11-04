@@ -4,6 +4,7 @@
 #include "SDL_events.h"
 #include "SDL_image.h"
 #include "SDL_keycode.h"
+#include "SDL_mouse.h"
 #include "SDL_rect.h"
 #include "SDL_render.h"
 #include "SDL_timer.h"
@@ -96,6 +97,12 @@ namespace core {
         SDL_Event e;
         bool running=true;
         api::font f("assets/fonts/font.ttf");
+        api::text scoretext(f,"Score:- ");
+        int score=0;
+        api::text sc(f, "0");
+        sc.i.dstrect.x=scoretext.i.dstrect.w+10;
+        api::text pressspace(f, "Press Space To start");
+
         api::image bg("assets/images/map.png", true, false);
         api::image ship("assets/images/ship.png");
         api::image bullet("assets/images/bullet.png");
@@ -105,7 +112,7 @@ namespace core {
 
         std::vector<std::pair<int, int>> bullets(10);
         float start,dt=0;
-        constexpr float bulletintervelmax=9000;
+        float bulletintervelmax=9;
         float bulletintervel=bulletintervelmax;
         float bulletspeed=5;
 
@@ -116,11 +123,17 @@ namespace core {
         asteroid ast(aster.get().get(), 400);
         bool hit=false,explode=false;
         int hitcount=0;
-
+        const float hitstaytimemax=10;
+        float hitstaytime=hitstaytimemax;
+        const float explodestaytimemax=8;
+        float explodestaytime=explodestaytimemax;
+        int astspeed=3;
         std::random_device rd;
         std::mt19937 gen(rd());
         std::uniform_int_distribution<int> distrib(0,(getW()/100));
 
+        int maxforupgrade=3;
+        bool play=false;
         SDL_ShowWindow(getWindow());
         while (running){
             start=SDL_GetTicks64();
@@ -148,86 +161,159 @@ namespace core {
             if (keylistener::isPressed(SDLK_ESCAPE)){
                 running=false;
             }
-            if (keylistener::isDown(SDLK_RIGHT)){
-                b2Body_ApplyForceToCenter(body.get(), {40,0}, false);
+            if (keylistener::isPressed(SDLK_SPACE)){
+                play=true;
             }
-            if (keylistener::isDown(SDLK_LEFT)){
-                b2Body_ApplyForceToCenter(body.get(), {-40,0}, false);
-            }
-            if (keylistener::isDown(SDLK_UP)){
-                b2Body_ApplyForceToCenter(body.get(), {0,-60}, false);
-            }
-            if (keylistener::isDown(SDLK_DOWN)){
-                b2Body_ApplyForceToCenter(body.get(), {-0,20}, false);
-            }
-            
-            world.simulate();
-            auto pos = b2Body_GetPosition(body.get());
-
-            ship.dstrect.x=pos.x*32;
-            ship.dstrect.y=pos.y*32;
-
-            bullet.dstrect.x=(pos.x*32)+(ship.dstrect.w/2.0f);
-            bullet.dstrect.y=pos.y*32;
-            bulletintervel-=(dt*1000);
-            if (bulletintervel<0){
-                bulletintervel=bulletintervelmax;
-                bullets.push_back({bullet.dstrect.x, bullet.dstrect.y});
-            }
-
-            if ((ship.dstrect.x+32)< 0 || (ship.dstrect.x+ship.dstrect.w-32)>getW()){
-                running=false;
-            }
-            if ((ship.dstrect.y+32)< 0 || (ship.dstrect.y+ship.dstrect.h-32)>getH()){
-                running=false;
-            }
-            for (int i=0;i<bullets.size();i++){
-                SDL_Rect r={bullets[i].first, bullets[i].second, bullet.dstrect.w, bullet.dstrect.h};
-                if (SDL_HasIntersection(&r, &ast.im.dstrect)){
-                    hit=true;
-                    i=bullets.size();
-                    hitcount++;
+            if (play){
+                if (keylistener::isDown(SDLK_RIGHT) || keylistener::isDown(SDLK_d)){
+                    b2Body_ApplyForceToCenter(body.get(), {40,0}, false);
                 }
-            }
-            ast.update(distrib(gen)*100);
-            if (hitcount>=ast.size){
-                ast.reset(distrib(gen)*100);
-                explode=true;
-                hitcount=0;
-            }
-            if (SDL_HasIntersection(&ast.im.dstrect, &ship.dstrect)){
-                running=false;
+                else if (mouselistener::isDown(SDL_BUTTON_RIGHT)){
+                    b2Body_ApplyForceToCenter(body.get(), {40,0}, false);
+                }
+    
+                if (keylistener::isDown(SDLK_LEFT) || keylistener::isDown(SDLK_a)){
+                    b2Body_ApplyForceToCenter(body.get(), {-40,0}, false);
+                }
+                else if (mouselistener::isDown(SDL_BUTTON_LEFT)){
+                    b2Body_ApplyForceToCenter(body.get(), {-40,0}, false);
+                }
+    
+                if (keylistener::isDown(SDLK_UP) || keylistener::isDown(SDLK_w)){
+                    b2Body_ApplyForceToCenter(body.get(), {0,-60}, false);
+                }
+                else if (mouselistener::getScrly()<0){
+                    b2Body_ApplyForceToCenter(body.get(), {0,-40}, false);
+                }
+    
+                if (keylistener::isDown(SDLK_DOWN) || keylistener::isDown(SDLK_s)){
+                    b2Body_ApplyForceToCenter(body.get(), {-0,20}, false);
+                }
+                else if (mouselistener::getScrly()>0){
+                    b2Body_ApplyForceToCenter(body.get(), {-0,5}, false);
+                }
+                
+                ast.speed=astspeed;
+                if (score >= maxforupgrade){
+                    bulletintervelmax-=1;
+                    bulletspeed+=3;
+                    maxforupgrade*=4;
+                    astspeed++;
+                }
+                if (score==100){
+                    running=false;
+                    std::cout << "nice dedication\n";
+                }
+                world.simulate();
+                auto pos = b2Body_GetPosition(body.get());
+    
+                ship.dstrect.x=pos.x*32;
+                ship.dstrect.y=pos.y*32;
+    
+                bullet.dstrect.x=(pos.x*32)+(ship.dstrect.w/2.0f);
+                bullet.dstrect.y=pos.y*32;
+                bulletintervel-=dt;
+                if (bulletintervel<0){
+                    bulletintervel=bulletintervelmax;
+                    bullets.push_back({bullet.dstrect.x, bullet.dstrect.y});
+                    if (score>=10){
+                        bullets.push_back({bullet.dstrect.x-((ship.dstrect.w/2.0f)-5), bullet.dstrect.y});
+                    }
+                    if (score>=50){
+                        bullets.push_back({bullet.dstrect.x+(ship.dstrect.w/2.0f)-10, bullet.dstrect.y});
+                    }
+                }
+    
+                if ((ship.dstrect.x+32)< 0 || (ship.dstrect.x+ship.dstrect.w-32)>getW()){
+                    running=false;
+                }
+                if ((ship.dstrect.y+32)< 0 || (ship.dstrect.y+ship.dstrect.h-32)>getH()){
+                    running=false;
+                }
+                for (int i=0;i<bullets.size();i++){
+                    SDL_Rect r={bullets[i].first, bullets[i].second, bullet.dstrect.w, bullet.dstrect.h};
+                    if (ast.y > ast.im.dstrect.h){
+                        if (SDL_HasIntersection(&r, &ast.im.dstrect)){
+                            bullets[i].second-=(ast.im.dstrect.h+10);
+                            hit=true;
+                            i=bullets.size();
+                            hitcount++;
+                        }
+                    }
+                }
+                if (!explode){
+                    ast.update(distrib(gen)*100);
+                }
+                if ((hitcount-6)>=ast.size){
+                    explode=true;
+                }
+                if (SDL_HasIntersection(&ast.im.dstrect, &ship.dstrect)){
+                    running=false;
+                }
             }
             SDL_RenderClear(getRenderer());
-            bg.draw();
-            if (explode){
-                asterexplode.dstrect=ast.im.dstrect;
-                asterexplode.draw();
-            }
-            else if (hit){
-                asterhit.dstrect=ast.im.dstrect;
-                asterhit.draw();
+            if (play){
+                bg.draw();
+                if (explode){
+                    asterexplode.dstrect=ast.im.dstrect;
+                    asterexplode.draw();
+                }
+                else if (hit){
+                    asterhit.dstrect=ast.im.dstrect;
+                    asterhit.draw();
+                }
+                else {
+                    ast.draw();
+                }
+                if (hit){
+                    hitstaytime-=dt;
+                    if (hitstaytime<0){
+                        hit=false;
+                        hitstaytime=hitstaytimemax;
+                    }
+                }
+                else {
+                    hit=false;
+                }
+                if (explode){
+                    explodestaytime-=dt;
+                    if (explodestaytime<0){
+                        explode=false;
+                        explodestaytime=explodestaytimemax;
+                        ast.reset(distrib(gen)*100);
+                        hitcount=0;
+                        score++;
+                    }
+                }
+                else {
+                    explode=false;
+                }
+                ship.draw();
+    
+                for (int i=0;i<bullets.size();i++){
+                    bullets[i].second-=bulletspeed;
+                    bullet.dstrect.x=bullets[i].first;
+                    bullet.dstrect.y=bullets[i].second;
+                    
+                    bullet.draw();
+                    if (bullets[i].second < 0){
+                        bullets.erase(bullets.begin()+i);
+                        i--;
+                    }
+                }
+                scoretext.draw();
+                sc.draw();
             }
             else {
-                ast.draw();
-            }
-            hit=false;
-            explode=false;
-            ship.draw();
-
-            for (int i=0;i<bullets.size();i++){
-                bullets[i].second-=bulletspeed;
-                bullet.dstrect.x=bullets[i].first;
-                bullet.dstrect.y=bullets[i].second;
-                
-                bullet.draw();
-                if (bullets[i].second < 0){
-                    bullets.erase(bullets.begin()+i);
-                    i--;
-                }
+                pressspace.draw();
             }
             SDL_RenderPresent(getRenderer());
-            
+            if (play){
+                if (std::stoi(sc.get()) != score){
+                    sc.setText(f, std::to_string(score).c_str());
+                    sc.i.dstrect.x=scoretext.i.dstrect.w+10;
+                }
+            }
             keylistener::update();
             mouselistener::update();
 

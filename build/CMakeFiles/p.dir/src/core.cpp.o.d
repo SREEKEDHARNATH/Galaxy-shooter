@@ -264,6 +264,7 @@ CMakeFiles/p.dir/src/core.cpp.o: \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_image.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_keycode.h \
+ /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_mouse.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_rect.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_render.h \
  /home/sree/12-weeks-projects/Galaxy\ shooter/include/SDL_timer.h \

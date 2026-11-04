@@ -60,8 +60,8 @@ namespace core::mouselistener {
         }
     }
     void reg(SDL_MouseWheelEvent w){
-        scrlx+=w.preciseX;
-        scrly+=w.preciseY;
+        scrlx=w.preciseX;
+        scrly=w.preciseY;
 
         if (w.direction==SDL_MOUSEWHEEL_FLIPPED){
             scrlx*=-1;
@@ -98,6 +98,10 @@ namespace core::mouselistener {
     void update(){
         for (int i=0;i<3;i++){
             prvbuttons[i]=buttons[i];
+        }
+        if (mouselistener::isDown(SDL_BUTTON_MIDDLE)){
+            scrlx=0;
+            scrly=0;
         }
     }
 }
