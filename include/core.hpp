@@ -2,7 +2,7 @@
 #include "SDL_render.h"
 
 namespace core {
-    void run();
+    void run(int argc=0, char** argv=nullptr);
     void quit();
 
     SDL_Window*& getWindow();

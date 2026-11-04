@@ -1,0 +1,5 @@
+1:- Played for 3 seconds, with Score:- 0
+2:- Played for 8 seconds, with Score:- 0
+3:- Played for 3 seconds, with Score:- 0
+4:- Played for 20 seconds, with Score:- 5
+5:- Played for 2 seconds, with Score:- 0

@@ -143,8 +143,8 @@ namespace core::api {
     }
     void soundeffect::play(){
         if (ptr.get()){
-            if (vol > 100){
-                vol = 100;
+            if (vol > 128){
+                vol = 128;
             }
             else if (vol < 0){
                 vol = 0;
@@ -152,9 +152,17 @@ namespace core::api {
             if (vol != ptr.get()->volume){
                 Mix_VolumeChunk(ptr.get(), vol);
             }
-            auto rescode = Mix_PlayChannel(-1, ptr.get(), false);
-            if (rescode==-1){
-                std::cerr << Mix_GetError() << "\n";
+            bool play=true;
+            if (channel != -1){
+                play=Mix_Playing(channel);
+            }
+            if (Mix_Playing(-1) < 4){
+                if (play){
+                    channel = Mix_PlayChannel(-1, ptr.get(), false);
+                    if (channel==-1){
+                        std::cerr << Mix_GetError() << "\n";
+                    }
+                }
             }
         }
     }

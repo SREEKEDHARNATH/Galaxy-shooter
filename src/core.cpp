@@ -91,13 +91,19 @@ namespace core {
         }
         return {true, "All Great"};
     }
-    void run(){
+    void run(int argc, char** argv){
         auto i = init();
         if (!i.first){
             std::cerr << i.second << "\n";
             return;
         }
-
+        bool cheat=false;
+        if (argc-1){
+            if (std::string(argv[1])=="-cheat=on"){
+                cheat=true;
+                std::cout << "cheat is enabled file saving is disabled\n";
+            }
+        }
         SDL_Event e;
         bool running=true;
         api::font f("assets/fonts/font.ttf");
@@ -130,12 +136,12 @@ namespace core {
         float hitstaytime=hitstaytimemax;
         const float explodestaytimemax=8;
         float explodestaytime=explodestaytimemax;
-        int astspeed=3;
+        int astspeed=cheat ? 1 : 3;
         std::random_device rd;
         std::mt19937 gen(rd());
         std::uniform_int_distribution<int> distrib(0,(getW()/100));
 
-        int maxforupgrade=3;
+        int maxforupgrade=cheat ? 1 : 3;
         bool play=false;
 
         api::image unfilledplaybutton("assets/images/unfilled-play-button.png");
@@ -177,6 +183,18 @@ namespace core {
         warning.i.dstrect.y=unfilledframe.dstrect.y-60;
         bool quit=false;
 
+        api::soundeffect laser("assets/sounds/laser-trim.mp3");
+        laser.vol=3;
+        api::soundeffect hitse("assets/sounds/hit.mp3");
+        hitse.vol=20;
+        api::soundeffect explosion("assets/sounds/explosion.mp3");
+        explosion.vol=50;
+        
+        api::music chill("assets/music/chill-bg.mp3");
+        chill.vol=128;
+        api::music tuff("assets/music/tuff-bg.mp3");
+        tuff.vol=80;
+        chill.play();
         SDL_ShowWindow(getWindow());
         while (running){
             start=SDL_GetTicks64();
@@ -244,7 +262,10 @@ namespace core {
                     bulletintervelmax-=1;
                     bulletspeed+=3;
                     maxforupgrade*=4;
-                    astspeed++;
+                    if (!cheat){
+                        astspeed++;
+                        ast.size+=0.75;
+                    }
                 }
                 if (score==100){
                     running=false;
@@ -262,28 +283,37 @@ namespace core {
                 if (bulletintervel<0){
                     bulletintervel=bulletintervelmax;
                     bullets.push_back({bullet.dstrect.x, bullet.dstrect.y});
-                    if (score>=10){
+                    if (cheat){
                         bullets.push_back({bullet.dstrect.x-((ship.dstrect.w/2.0f)-5), bullet.dstrect.y});
-                    }
-                    if (score>=50){
                         bullets.push_back({bullet.dstrect.x+(ship.dstrect.w/2.0f)-10, bullet.dstrect.y});
                     }
+                    else {
+                        if (score>=10){
+                            bullets.push_back({bullet.dstrect.x-((ship.dstrect.w/2.0f)-5), bullet.dstrect.y});
+                        }
+                        if (score>=50){
+                            bullets.push_back({bullet.dstrect.x+(ship.dstrect.w/2.0f)-10, bullet.dstrect.y});
+                        }
+                    }
                 }
-    
+
                 if ((ship.dstrect.x+32)< 0 || (ship.dstrect.x+ship.dstrect.w-32)>getW()){
                     play=false;
                     b2Body_SetTransform(body.get(), {0,400/32.0f}, b2Body_GetRotation(body.get()));
                     ast.reset();
                     bullets.clear();
                     b2Body_SetLinearVelocity(body.get(), {0,0});
+                    chill.play();
                 }
-                if ((ship.dstrect.y+32)< 0 || (ship.dstrect.y+ship.dstrect.h-32)>getH()){
+                else if ((ship.dstrect.y+32)< 0 || (ship.dstrect.y+ship.dstrect.h-32)>getH()){
                     play=false;
                     b2Body_SetTransform(body.get(), {0,400/32.0f}, b2Body_GetRotation(body.get()));
                     ast.reset();
                     bullets.clear();
                     b2Body_SetLinearVelocity(body.get(), {0,0});
+                    chill.play();
                 }
+                bool h=false;
                 for (int i=0;i<bullets.size();i++){
                     SDL_Rect r={bullets[i].first, bullets[i].second, bullet.dstrect.w, bullet.dstrect.h};
                     if (ast.y > ast.im.dstrect.h){
@@ -292,21 +322,27 @@ namespace core {
                             hit=true;
                             i=bullets.size();
                             hitcount++;
+                            h=true;
                         }
                     }
+                }
+                if (h){
+                    hitse.play();
                 }
                 if (!explode){
                     ast.update(distrib(gen)*100);
                 }
-                if ((hitcount-6)>=ast.size){
+                if ((hitcount-5)>=ast.size){
                     explode=true;
+                    explosion.play();
                 }
-                if (SDL_HasIntersection(&ast.im.dstrect, &ship.dstrect)){
+                if (SDL_HasIntersection(&ast.im.dstrect, &ship.dstrect) && !explode && !cheat){
                     play=false;
                     b2Body_SetTransform(body.get(), {0,400/32.0f}, b2Body_GetRotation(body.get()));
                     ast.reset();
                     bullets.clear();
                     b2Body_SetLinearVelocity(body.get(), {0,0});
+                    chill.play();
                 }
             }
             SDL_RenderClear(getRenderer());
@@ -347,7 +383,9 @@ namespace core {
                     explode=false;
                 }
                 ship.draw();
-    
+                if (bullets.size()){
+                    laser.play();
+                }
                 for (int i=0;i<bullets.size();i++){
                     bullets[i].second-=bulletspeed;
                     bullet.dstrect.x=bullets[i].first;
@@ -384,6 +422,7 @@ namespace core {
                                 ast.reset();
                                 bullets.clear();
                                 b2Body_SetLinearVelocity(body.get(), {0,0});
+                                chill.play();
                             }
                             escape=false;
                         }
@@ -408,6 +447,8 @@ namespace core {
                         if (mouselistener::isPressed(SDL_BUTTON_LEFT)){
                             play=true;
                             score=0;
+                            chill.halt();
+                            tuff.play();
                         }
                     }
                     else {
@@ -438,35 +479,37 @@ namespace core {
             dt=SDL_GetTicks64()-start;
             SDL_Delay(16);
         }
-        int pos=0;
-        std::ifstream filein("scores.txt");
-        if (filein.is_open()){
-            std::string line;
-            int skipcount=0;
-            while (filein >> line){
-                if (skipcount){
-                    skipcount--;
-                    continue;   
-                }
-                try {
-                    auto i = std::stoi(line.substr(0,1));
-                    if (i > pos){
-                        pos=i;
+        if (!cheat){
+            int pos=0;
+            std::ifstream filein("scores.txt");
+            if (filein.is_open()){
+                std::string line;
+                int skipcount=0;
+                while (filein >> line){
+                    if (skipcount){
+                        skipcount--;
+                        continue;   
                     }
+                    try {
+                        auto i = std::stoi(line.substr(0,1));
+                        if (i > pos){
+                            pos=i;
+                        }
+                    }
+                    catch(std::exception& e){}
+                    skipcount=7;
                 }
-                catch(std::exception& e){}
-                skipcount=7;
+                filein.close();
             }
-            filein.close();
-        }
-        pos++;
-        auto endtime = std::chrono::steady_clock::now();
-        auto a = std::chrono::duration_cast<std::chrono::seconds>(starttime.time_since_epoch());
-        auto b = std::chrono::duration_cast<std::chrono::seconds>(endtime.time_since_epoch());
-        std::ofstream file("scores.txt", std::ios::app);
-        if (file.is_open()){
-            file << pos << ":- Played for " << b.count()-a.count() << " seconds, with Score:- " << score << "\n";
-            file.close();
+            pos++;
+            auto endtime = std::chrono::steady_clock::now();
+            auto a = std::chrono::duration_cast<std::chrono::seconds>(starttime.time_since_epoch());
+            auto b = std::chrono::duration_cast<std::chrono::seconds>(endtime.time_since_epoch());
+            std::ofstream file("scores.txt", std::ios::app);
+            if (file.is_open()){
+                file << pos << ":- Played for " << b.count()-a.count() << " seconds, with Score:- " << score << "\n";
+                file.close();
+            }
         }
     }
     void quit(){

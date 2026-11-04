@@ -40,6 +40,7 @@ namespace core::api {
     };
     class soundeffect{
         std::shared_ptr<Mix_Chunk> ptr;
+        int channel=-1;
         public:
             int vol=80;
             soundeffect(const char* name);
