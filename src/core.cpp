@@ -152,13 +152,39 @@ namespace core {
 
         SDL_Rect mouse={0,0,1,1};
         auto starttime = std::chrono::steady_clock::now();
+        bool escape=false;
+
+        api::image unfilledyes("assets/images/unfilled-yes.png");
+        api::image unfilledno("assets/images/unfilled-no.png");
+        api::image unfilledframe("assets/images/unfilled-frame.png");
+        api::image filledyes("assets/images/filled-yes.png");
+        api::image filledno("assets/images/filled-no.png");
+        api::image filledframe("assets/images/filled-frame.png");
+        
+        unfilledframe.dstrect.x=(getW()/2.0f)-180;
+        unfilledframe.dstrect.y=(getH()/2.0f)-30;
+        unfilledyes.dstrect.x=unfilledplaybutton.dstrect.x+60;
+        unfilledyes.dstrect.y=unfilledplaybutton.dstrect.y+70;
+        unfilledno.dstrect.x=filledquitbutton.dstrect.x+60;
+        unfilledno.dstrect.y=filledquitbutton.dstrect.y+70;
+        
+        filledyes.dstrect = unfilledyes.dstrect;
+        filledno.dstrect = unfilledno.dstrect;
+        filledframe.dstrect = unfilledframe.dstrect;
+
+        api::text warning(f,"Are you sure");
+        warning.i.dstrect.x=unfilledframe.dstrect.x+30;
+        warning.i.dstrect.y=unfilledframe.dstrect.y-60;
+        bool quit=false;
+
         SDL_ShowWindow(getWindow());
         while (running){
             start=SDL_GetTicks64();
             while (SDL_PollEvent(&e)) {
                 switch (e.type) {
                     case SDL_QUIT:
-                        running=false;
+                        escape=true;
+                        quit=true;
                         break;
                     case SDL_KEYUP:
                     case SDL_KEYDOWN:
@@ -177,15 +203,14 @@ namespace core {
                 }
             }
             if (keylistener::isPressed(SDLK_ESCAPE)){
-                play=false;
-                b2Body_SetTransform(body.get(), {0,400/32.0f}, b2Body_GetRotation(body.get()));
-                ast.reset();
-                bullets.clear();
-                b2Body_SetLinearVelocity(body.get(), {0,0});
+                escape=true;
+                if (!play){
+                    quit=true;
+                }
             }
             mouse.x=mouselistener::getX();
             mouse.y=mouselistener::getY();
-            if (play){
+            if (play && !escape){
                 if (keylistener::isDown(SDLK_RIGHT) || keylistener::isDown(SDLK_d)){
                     b2Body_ApplyForceToCenter(body.get(), {40,0}, false);
                 }
@@ -285,7 +310,7 @@ namespace core {
                 }
             }
             SDL_RenderClear(getRenderer());
-            if (play){
+            if (play && !escape){
                 bg.draw();
                 if (explode){
                     asterexplode.dstrect=ast.im.dstrect;
@@ -338,28 +363,70 @@ namespace core {
                 sc.draw();
             }
             else {
-                if (SDL_HasIntersection(&mouse, &unfilledplaybutton.dstrect)){
-                    filledplaybutton.draw();
-                    if (mouselistener::isPressed(SDL_BUTTON_LEFT)){
-                        play=true;
-                        score=0;
+                if (escape){
+                    warning.draw();
+                    if (SDL_HasIntersection(&mouse, &unfilledframe.dstrect)){
+                        filledframe.draw();
+                    }
+                    else {
+                        unfilledframe.draw();
+                    }
+                    if (SDL_HasIntersection(&mouse, &unfilledyes.dstrect)){
+                        filledyes.draw();
+                        if (mouselistener::isPressed(SDL_BUTTON_LEFT)){
+                            if (quit){
+                                running=false;
+                                quit=false;
+                            }
+                            else {
+                                play=false;
+                                b2Body_SetTransform(body.get(), {0,400/32.0f}, b2Body_GetRotation(body.get()));
+                                ast.reset();
+                                bullets.clear();
+                                b2Body_SetLinearVelocity(body.get(), {0,0});
+                            }
+                            escape=false;
+                        }
+                    }
+                    else {
+                        unfilledyes.draw();
+                    }
+                    if (SDL_HasIntersection(&mouse, &unfilledno.dstrect)){
+                        filledno.draw();
+                        if (mouselistener::isPressed(SDL_BUTTON_LEFT)){
+                            escape=false;
+                            quit=false;
+                        }
+                    }
+                    else {
+                        unfilledno.draw();
                     }
                 }
                 else {
-                    unfilledplaybutton.draw();
-                }
-                if (SDL_HasIntersection(&mouse, &unfilledquitbutton.dstrect)){
-                    filledquitbutton.draw();
-                    if (mouselistener::isPressed(SDL_BUTTON_LEFT)){
-                        running=false;
+                    if (SDL_HasIntersection(&mouse, &unfilledplaybutton.dstrect)){
+                        filledplaybutton.draw();
+                        if (mouselistener::isPressed(SDL_BUTTON_LEFT)){
+                            play=true;
+                            score=0;
+                        }
                     }
-                }
-                else {
-                    unfilledquitbutton.draw();
+                    else {
+                        unfilledplaybutton.draw();
+                    }
+                    if (SDL_HasIntersection(&mouse, &unfilledquitbutton.dstrect)){
+                        filledquitbutton.draw();
+                        if (mouselistener::isPressed(SDL_BUTTON_LEFT)){
+                            escape=true;
+                            quit=true;
+                        }
+                    }
+                    else {
+                        unfilledquitbutton.draw();
+                    }
                 }
             }
             SDL_RenderPresent(getRenderer());
-            if (play){
+            if (play && !escape){
                 if (std::stoi(sc.get()) != score){
                     sc.setText(f, std::to_string(score).c_str());
                     sc.i.dstrect.x=scoretext.i.dstrect.w+10;
