@@ -10,8 +10,12 @@
 #include "SDL_timer.h"
 #include "SDL_ttf.h"
 #include "SDL_video.h"
+#include <chrono>
+#include <exception>
+#include <fstream>
 #include <iostream>
 #include <random>
+#include <string>
 #include <utility>
 #include <vector>
 #include "api.hpp"
@@ -147,6 +151,7 @@ namespace core {
         filledquitbutton.dstrect=unfilledquitbutton.dstrect;
 
         SDL_Rect mouse={0,0,1,1};
+        auto starttime = std::chrono::steady_clock::now();
         SDL_ShowWindow(getWindow());
         while (running){
             start=SDL_GetTicks64();
@@ -173,6 +178,10 @@ namespace core {
             }
             if (keylistener::isPressed(SDLK_ESCAPE)){
                 play=false;
+                b2Body_SetTransform(body.get(), {0,400/32.0f}, b2Body_GetRotation(body.get()));
+                ast.reset();
+                bullets.clear();
+                b2Body_SetLinearVelocity(body.get(), {0,0});
             }
             mouse.x=mouselistener::getX();
             mouse.y=mouselistener::getY();
@@ -237,10 +246,18 @@ namespace core {
                 }
     
                 if ((ship.dstrect.x+32)< 0 || (ship.dstrect.x+ship.dstrect.w-32)>getW()){
-                    running=false;
+                    play=false;
+                    b2Body_SetTransform(body.get(), {0,400/32.0f}, b2Body_GetRotation(body.get()));
+                    ast.reset();
+                    bullets.clear();
+                    b2Body_SetLinearVelocity(body.get(), {0,0});
                 }
                 if ((ship.dstrect.y+32)< 0 || (ship.dstrect.y+ship.dstrect.h-32)>getH()){
-                    running=false;
+                    play=false;
+                    b2Body_SetTransform(body.get(), {0,400/32.0f}, b2Body_GetRotation(body.get()));
+                    ast.reset();
+                    bullets.clear();
+                    b2Body_SetLinearVelocity(body.get(), {0,0});
                 }
                 for (int i=0;i<bullets.size();i++){
                     SDL_Rect r={bullets[i].first, bullets[i].second, bullet.dstrect.w, bullet.dstrect.h};
@@ -260,7 +277,11 @@ namespace core {
                     explode=true;
                 }
                 if (SDL_HasIntersection(&ast.im.dstrect, &ship.dstrect)){
-                    running=false;
+                    play=false;
+                    b2Body_SetTransform(body.get(), {0,400/32.0f}, b2Body_GetRotation(body.get()));
+                    ast.reset();
+                    bullets.clear();
+                    b2Body_SetLinearVelocity(body.get(), {0,0});
                 }
             }
             SDL_RenderClear(getRenderer());
@@ -321,6 +342,7 @@ namespace core {
                     filledplaybutton.draw();
                     if (mouselistener::isPressed(SDL_BUTTON_LEFT)){
                         play=true;
+                        score=0;
                     }
                 }
                 else {
@@ -348,6 +370,36 @@ namespace core {
 
             dt=SDL_GetTicks64()-start;
             SDL_Delay(16);
+        }
+        int pos=0;
+        std::ifstream filein("scores.txt");
+        if (filein.is_open()){
+            std::string line;
+            int skipcount=0;
+            while (filein >> line){
+                if (skipcount){
+                    skipcount--;
+                    continue;   
+                }
+                try {
+                    auto i = std::stoi(line.substr(0,1));
+                    if (i > pos){
+                        pos=i;
+                    }
+                }
+                catch(std::exception& e){}
+                skipcount=7;
+            }
+            filein.close();
+        }
+        pos++;
+        auto endtime = std::chrono::steady_clock::now();
+        auto a = std::chrono::duration_cast<std::chrono::seconds>(starttime.time_since_epoch());
+        auto b = std::chrono::duration_cast<std::chrono::seconds>(endtime.time_since_epoch());
+        std::ofstream file("scores.txt", std::ios::app);
+        if (file.is_open()){
+            file << pos << ":- Played for " << b.count()-a.count() << " seconds, with Score:- " << score << "\n";
+            file.close();
         }
     }
     void quit(){
