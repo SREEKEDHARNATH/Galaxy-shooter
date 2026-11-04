@@ -101,7 +101,6 @@ namespace core {
         int score=0;
         api::text sc(f, "0");
         sc.i.dstrect.x=scoretext.i.dstrect.w+10;
-        api::text pressspace(f, "Press Space To start");
 
         api::image bg("assets/images/map.png", true, false);
         api::image ship("assets/images/ship.png");
@@ -134,6 +133,20 @@ namespace core {
 
         int maxforupgrade=3;
         bool play=false;
+
+        api::image unfilledplaybutton("assets/images/unfilled-play-button.png");
+        unfilledplaybutton.dstrect.x=(getW()/2.0f)-120;
+        unfilledplaybutton.dstrect.y=(getH()/2.0f)-60;
+        api::image filledplaybutton("assets/images/filled-play-button.png");
+        filledplaybutton.dstrect=unfilledplaybutton.dstrect;
+
+        api::image unfilledquitbutton("assets/images/unfilled-quit-button.png");
+        unfilledquitbutton.dstrect=unfilledplaybutton.dstrect;
+        unfilledquitbutton.dstrect.y+=90;
+        api::image filledquitbutton("assets/images/filled-quit-button.png");
+        filledquitbutton.dstrect=unfilledquitbutton.dstrect;
+
+        SDL_Rect mouse={0,0,1,1};
         SDL_ShowWindow(getWindow());
         while (running){
             start=SDL_GetTicks64();
@@ -159,11 +172,10 @@ namespace core {
                 }
             }
             if (keylistener::isPressed(SDLK_ESCAPE)){
-                running=false;
+                play=false;
             }
-            if (keylistener::isPressed(SDLK_SPACE)){
-                play=true;
-            }
+            mouse.x=mouselistener::getX();
+            mouse.y=mouselistener::getY();
             if (play){
                 if (keylistener::isDown(SDLK_RIGHT) || keylistener::isDown(SDLK_d)){
                     b2Body_ApplyForceToCenter(body.get(), {40,0}, false);
@@ -305,7 +317,24 @@ namespace core {
                 sc.draw();
             }
             else {
-                pressspace.draw();
+                if (SDL_HasIntersection(&mouse, &unfilledplaybutton.dstrect)){
+                    filledplaybutton.draw();
+                    if (mouselistener::isPressed(SDL_BUTTON_LEFT)){
+                        play=true;
+                    }
+                }
+                else {
+                    unfilledplaybutton.draw();
+                }
+                if (SDL_HasIntersection(&mouse, &unfilledquitbutton.dstrect)){
+                    filledquitbutton.draw();
+                    if (mouselistener::isPressed(SDL_BUTTON_LEFT)){
+                        running=false;
+                    }
+                }
+                else {
+                    unfilledquitbutton.draw();
+                }
             }
             SDL_RenderPresent(getRenderer());
             if (play){
