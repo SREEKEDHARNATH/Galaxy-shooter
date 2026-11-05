@@ -1,5 +1,9 @@
 #Galaxy shooter
 
+This is a galaxy shooter game you have to take down asteroids
+All is hand drawn
+
+download appimage and run chmod +x the appimage and ./appimage
 keycontrols wasd or arrow keys
 
 mouse controls(alpha not recommended) left click to go left and right button to go right
