@@ -20,6 +20,8 @@ All arguements
 
 -mouse=on    : enables mousecontrols
 
+-verbose=on  : enables logging of arguements
+
 
 -cheat=off   : disables cheats
 

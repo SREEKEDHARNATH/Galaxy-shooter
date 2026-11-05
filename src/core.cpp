@@ -183,6 +183,13 @@ namespace core {
                         std::cout << "noooooooo on :(\n";
                     }
                 }
+                else if (std::string(argv[i])=="-h"){
+                    std::cout << "\n\nAll arguements\n\n";
+                    std::cout << "-cheat=on    : enables cheats\n-mute=on     : mutes\n-file=on     : enables file saving\n-key=on      : enables keycontrols\n-mouse=on    : enables mousecontrols\n-verbose=on  : enables logging of arguements\n\n";
+                    std::cout << "-cheat=off   : disables cheats\n-mute=off    : unmutes\n-file=off    : disables file saving\n-key=off     : disables keycontrols\n-mouse=off   : disables mousecontrols\n-verbose=off : disables logging of arguements\n\n";
+                    std::cout << "\n-discard-arguements : disables all arguements provided\n";
+                    return;
+                }
             }
         }
         if (cheat){
@@ -280,9 +287,12 @@ namespace core {
         filledno.dstrect = unfilledno.dstrect;
         filledframe.dstrect = unfilledframe.dstrect;
 
-        api::text warning(f,"Are you sure");
-        warning.i.dstrect.x=unfilledframe.dstrect.x+30;
+        api::text warning(f,"Are you sure you want to exit");
+        api::text gamewarning(f,"You are about to quit game");
+        warning.i.dstrect.x=unfilledframe.dstrect.x-40;
         warning.i.dstrect.y=unfilledframe.dstrect.y-60;
+        gamewarning.i.dstrect.x=unfilledframe.dstrect.x-30;
+        gamewarning.i.dstrect.y=unfilledframe.dstrect.y-60;
         bool quit=false;
 
         api::soundeffect laser("assets/sounds/laser-trim.mp3");
@@ -313,8 +323,19 @@ namespace core {
             while (SDL_PollEvent(&e)) {
                 switch (e.type) {
                     case SDL_QUIT:
+                        if (escape||quit){
+                            running=false;
+                        }
                         escape=true;
-                        quit=true;
+                        if (play){
+                            b2Body_SetLinearVelocity(body.get(), {0,0});
+                            bullets.clear();
+                        }
+                        else {
+                            quit=true;
+                        }
+                        tuff.pause();
+                        chill.pause();
                         break;
                     case SDL_KEYUP:
                     case SDL_KEYDOWN:
@@ -333,10 +354,19 @@ namespace core {
                 }
             }
             if (keylistener::isPressed(SDLK_ESCAPE)){
+                if (escape||quit){
+                    running=false;
+                }
                 escape=true;
-                if (!play){
+                if (play){
+                    b2Body_SetLinearVelocity(body.get(), {0,0});
+                    bullets.clear();
+                }
+                else {
                     quit=true;
                 }
+                tuff.pause();
+                chill.pause();
             }
             mouse.x=mouselistener::getX();
             mouse.y=mouselistener::getY();
@@ -527,7 +557,12 @@ namespace core {
             }
             else {
                 if (escape){
-                    warning.draw();
+                    if (play){
+                        gamewarning.draw();
+                    }
+                    else {
+                        warning.draw();
+                    }
                     if (SDL_HasIntersection(&mouse, &unfilledframe.dstrect)){
                         filledframe.draw();
                     }
@@ -548,7 +583,8 @@ namespace core {
                                 bullets.clear();
                                 b2Body_SetLinearVelocity(body.get(), {0,0});
                                 if (!mute){
-                                    chill.play();
+                                    tuff.pause();
+                                    chill.resume();
                                 }
                             }
                             escape=false;
@@ -562,6 +598,12 @@ namespace core {
                         if (mouselistener::isPressed(SDL_BUTTON_LEFT)){
                             escape=false;
                             quit=false;
+                            if (play){
+                                tuff.resume();
+                            }
+                            else {
+                                chill.resume();
+                            }
                         }
                     }
                     else {
@@ -620,10 +662,8 @@ namespace core {
                         continue;   
                     }
                     try {
-                        auto i = std::stoi(line.substr(0,1));
-                        if (i > pos){
-                            pos=i;
-                        }
+                        auto i = std::stoi(line.substr(0,6));
+                        pos=i;
                     }
                     catch(std::exception& e){}
                     skipcount=7;
